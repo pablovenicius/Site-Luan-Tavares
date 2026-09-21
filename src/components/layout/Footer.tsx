@@ -1,9 +1,9 @@
 "use client";
 
+import Image from "next/image";
 import { siteConfig, footerLinks } from "@/config/site";
 import { whatsappLinks } from "@/lib/whatsapp";
 import { trackWhatsAppClick } from "@/lib/analytics";
-import { Logo } from "@/components/ui/Logo";
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -12,7 +12,14 @@ export function Footer() {
     <footer className="border-t border-fg/[.08] bg-ink-deep">
       <div className="mx-auto grid max-w-[1200px] grid-cols-[repeat(auto-fit,minmax(230px,1fr))] gap-9 px-5 pb-7 pt-14">
         <div>
-          <Logo loading="lazy" className="mb-[18px]" imageClassName="w-[186px]" />
+          <Image
+            src={siteConfig.logo}
+            alt={siteConfig.brand}
+            width={1400}
+            height={768}
+            loading="lazy"
+            className="mb-[18px] block h-auto w-[210px] rounded-lg"
+          />
           <p className="max-w-[34ch] text-sm text-fg-subtle">
             Treino personalizado presencial em {siteConfig.city} e consultoria online para todo o
             Brasil.

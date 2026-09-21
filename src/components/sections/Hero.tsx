@@ -1,9 +1,9 @@
+import Image from "next/image";
 import { siteConfig } from "@/config/site";
 import { whatsappLinks } from "@/lib/whatsapp";
 import { IconCheck } from "@/components/icons";
 import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
 import { ImagePlaceholder } from "@/components/ui/ImagePlaceholder";
-import { Logo } from "@/components/ui/Logo";
 
 const checklist = [
   "Atendimento presencial e online",
@@ -29,10 +29,13 @@ export function Hero() {
 
       <div className="relative mx-auto grid max-w-[1200px] grid-cols-[repeat(auto-fit,minmax(330px,1fr))] items-center gap-[clamp(36px,5vw,64px)] px-5 pb-[clamp(56px,7vw,104px)] pt-[clamp(48px,7vw,96px)]">
         <div>
-          <Logo
+          <Image
+            src={siteConfig.logo}
+            alt={siteConfig.brand}
+            width={1400}
+            height={768}
             priority
-            className="mb-7 w-[min(340px,72%)]"
-            imageClassName="w-full h-auto"
+            className="mb-7 block h-auto w-[min(340px,72%)] rounded-[10px]"
           />
           <p className="mb-3.5 text-xs font-bold uppercase tracking-[.24em] text-lime">
             Presencial em {siteConfig.city} · Consultoria online
