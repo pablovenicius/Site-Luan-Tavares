@@ -24,7 +24,7 @@ export const siteConfig = {
   instagram: "[INSTAGRAM]",
 
   // Ativos
-  logo: "/images/logo-luan-tavares.jpg",
+  logo: "/images/logo-luan-tavares.png",
 } as const;
 
 export const navLinks = [

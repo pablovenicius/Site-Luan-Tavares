@@ -35,7 +35,7 @@ export function Hero() {
             width={1400}
             height={768}
             priority
-            className="mb-7 block h-auto w-[min(340px,72%)] rounded-[10px]"
+            className="mb-7 block h-auto w-[min(340px,72%)]"
           />
           <p className="mb-3.5 text-xs font-bold uppercase tracking-[.24em] text-lime">
             Presencial em {siteConfig.city} · Consultoria online

@@ -62,7 +62,8 @@ Para colocar as fotos reais:
    (mantendo o container com `position: relative` que já envolve o
    placeholder).
 
-O logo (`logo-luan-tavares.jpg`) já está em `public/images/` e em uso no
+O logo (`logo-luan-tavares.png`, com fundo transparente de verdade — canal
+alfa, não é truque de CSS) já está em `public/images/` e em uso no
 header, hero e rodapé.
 
 ## Estrutura do projeto

@@ -18,7 +18,7 @@ export function Footer() {
             width={1400}
             height={768}
             loading="lazy"
-            className="mb-[18px] block h-auto w-[210px] rounded-lg"
+            className="mb-[18px] block h-auto w-[210px]"
           />
           <p className="max-w-[34ch] text-sm text-fg-subtle">
             Treino personalizado presencial em {siteConfig.city} e consultoria online para todo o

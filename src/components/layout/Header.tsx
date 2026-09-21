@@ -21,7 +21,7 @@ export function Header() {
             width={1400}
             height={768}
             priority
-            className="block h-14 w-auto rounded-md"
+            className="block h-14 w-auto"
           />
         </a>
 
