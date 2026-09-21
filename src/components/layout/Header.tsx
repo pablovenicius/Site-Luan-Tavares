@@ -6,7 +6,6 @@ import { siteConfig, navLinks } from "@/config/site";
 import { whatsappLinks } from "@/lib/whatsapp";
 import { IconMenu, IconInstagram } from "@/components/icons";
 import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
-import { cn } from "@/lib/cn";
 
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -38,19 +37,23 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-2.5">
+          {/* Instagram e WhatsApp: só na barra do topo a partir de md (desktop/tablet).
+              No mobile eles moram dentro do menu hambúrguer, abaixo. */}
           <a
             href={`https://instagram.com/${siteConfig.instagram}`}
             target="_blank"
             rel="noopener"
             aria-label={`Instagram de ${siteConfig.brand}`}
-            className="grid h-[46px] w-[46px] flex-none place-items-center rounded-[10px] border border-fg/[.22] text-fg transition-colors hover:border-lime hover:text-lime"
+            className="hidden h-[46px] w-[46px] flex-none place-items-center rounded-[10px] border border-fg/[.22] text-fg transition-colors hover:border-lime hover:text-lime md:grid"
           >
             <IconInstagram className="h-5 w-5" />
           </a>
 
-          <WhatsAppButton href={whatsappLinks.geral} section="header" size="md">
-            <span className="hidden sm:inline">Chamar no WhatsApp</span>
-          </WhatsAppButton>
+          <div className="hidden md:block">
+            <WhatsAppButton href={whatsappLinks.geral} section="header" size="md">
+              Chamar no WhatsApp
+            </WhatsAppButton>
+          </div>
 
           <button
             type="button"
@@ -67,21 +70,38 @@ export function Header() {
       {menuOpen && (
         <nav
           aria-label="Navegação principal"
-          className="grid gap-0.5 border-t border-fg/[.08] bg-ink-alt px-5 pb-[18px] pt-2.5 md:hidden"
+          className="grid gap-0.5 border-t border-fg/[.08] bg-ink-alt px-5 pb-6 pt-2.5 md:hidden"
         >
-          {navLinks.map((link, index) => (
+          {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
               onClick={() => setMenuOpen(false)}
-              className={cn(
-                "py-3.5 px-1 font-semibold text-fg",
-                index < navLinks.length - 1 && "border-b border-fg/[.06]"
-              )}
+              className="border-b border-fg/[.06] py-3.5 px-1 font-semibold text-fg"
             >
               {link.label}
             </a>
           ))}
+
+          <a
+            href={`https://instagram.com/${siteConfig.instagram}`}
+            target="_blank"
+            rel="noopener"
+            onClick={() => setMenuOpen(false)}
+            className="flex items-center gap-2.5 border-b border-fg/[.06] py-3.5 px-1 font-semibold text-fg"
+          >
+            <IconInstagram className="h-[18px] w-[18px] text-lime" />
+            Instagram
+          </a>
+
+          <WhatsAppButton
+            href={whatsappLinks.geral}
+            section="menu-mobile"
+            size="lg"
+            className="mt-4 w-full justify-center"
+          >
+            Chamar no WhatsApp
+          </WhatsAppButton>
         </nav>
       )}
     </header>
