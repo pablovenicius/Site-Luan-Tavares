@@ -17,11 +17,11 @@ export const siteConfig = {
   // Dados de atendimento
   city: "[CIDADE]",
   neighborhoods: "[BAIRROS/REGIÕES]",
-  cref: "[inserir número]",
+  cref: "004777-G/SE",
 
   // Contato — apenas dígitos, com DDI 55 + DDD + número (ex.: 5579999999999)
-  whatsapp: "55[WHATSAPP]",
-  instagram: "[INSTAGRAM]",
+  whatsapp: "5579991516767",
+  instagram: "luantavarespersonal",
 
   // Ativos
   logo: "/images/logo-luan-tavares.png",

@@ -32,9 +32,9 @@ site (`src/lib/whatsapp.ts`), inclusive as mensagens pré-preenchidas de
 cada seção e o formulário de contato.
 
 O texto "Atendimento presencial em [CIDADE] e região ([BAIRROS/REGIÕES])"
-e o texto de rodapé com `[WHATSAPP]` ainda têm placeholders literais em
-`src/components/layout/Footer.tsx` e `src/lib/structured-data.ts` (última
-pergunta do FAQ) — ajuste-os junto com `site.ts`.
+ainda tem placeholders literais em `src/components/layout/Footer.tsx` e
+`src/lib/structured-data.ts` (última pergunta do FAQ) — ajuste-os junto com
+`site.ts`. O número de WhatsApp do rodapé já foi preenchido.
 
 ## Fotos do Luan
 

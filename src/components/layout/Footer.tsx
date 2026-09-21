@@ -49,7 +49,7 @@ export function Footer() {
             onClick={() => trackWhatsAppClick("footer")}
             className="text-[15px] font-semibold text-lime"
           >
-            WhatsApp: [WHATSAPP]
+            WhatsApp: +55 79 99151-6767
           </a>
           <a
             href={`https://instagram.com/${siteConfig.instagram}`}
