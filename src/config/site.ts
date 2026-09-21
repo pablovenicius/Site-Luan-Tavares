@@ -15,7 +15,7 @@ export const siteConfig = {
   url: "https://www.seudominio.com.br",
 
   // Dados de atendimento
-  city: "[CIDADE]",
+  city: "Aracaju",
   neighborhoods: "[BAIRROS/REGIÕES]",
   cref: "004777-G/SE",
 

@@ -4,7 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { siteConfig, navLinks } from "@/config/site";
 import { whatsappLinks } from "@/lib/whatsapp";
-import { IconMenu } from "@/components/icons";
+import { IconMenu, IconInstagram } from "@/components/icons";
 import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
 import { cn } from "@/lib/cn";
 
@@ -38,8 +38,18 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-2.5">
+          <a
+            href={`https://instagram.com/${siteConfig.instagram}`}
+            target="_blank"
+            rel="noopener"
+            aria-label={`Instagram de ${siteConfig.brand}`}
+            className="grid h-[46px] w-[46px] flex-none place-items-center rounded-[10px] border border-fg/[.22] text-fg transition-colors hover:border-lime hover:text-lime"
+          >
+            <IconInstagram className="h-5 w-5" />
+          </a>
+
           <WhatsAppButton href={whatsappLinks.geral} section="header" size="md">
-            Chamar no WhatsApp
+            <span className="hidden sm:inline">Chamar no WhatsApp</span>
           </WhatsAppButton>
 
           <button
