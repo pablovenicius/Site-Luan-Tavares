@@ -1,11 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import { siteConfig, navLinks } from "@/config/site";
 import { whatsappLinks } from "@/lib/whatsapp";
 import { IconMenu } from "@/components/icons";
 import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
+import { Logo } from "@/components/ui/Logo";
 import { cn } from "@/lib/cn";
 
 export function Header() {
@@ -15,14 +15,7 @@ export function Header() {
     <header className="sticky top-0 z-[100] border-b border-fg/[.08] bg-ink/[.88] backdrop-blur-lg">
       <div className="mx-auto flex max-w-[1200px] items-center justify-between gap-5 px-5 py-2.5">
         <a href="#topo" aria-label={`${siteConfig.brand}, início`} className="block flex-none">
-          <Image
-            src={siteConfig.logo}
-            alt={siteConfig.brand}
-            width={1400}
-            height={768}
-            priority
-            className="block h-14 w-auto rounded-md"
-          />
+          <Logo priority imageClassName="h-11 w-auto" />
         </a>
 
         <nav aria-label="Navegação principal" className="hidden items-center gap-7 md:flex">
