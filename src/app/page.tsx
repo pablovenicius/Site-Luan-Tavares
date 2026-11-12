@@ -5,6 +5,7 @@ import { ScrollProgress } from "@/components/ui/ScrollProgress";
 import { Hero } from "@/components/sections/Hero";
 import { Marquee } from "@/components/sections/Marquee";
 import { Sobre } from "@/components/sections/Sobre";
+import { Aplicativo } from "@/components/sections/Aplicativo";
 import { Servicos } from "@/components/sections/Servicos";
 import { Metodo } from "@/components/sections/Metodo";
 import { Galeria } from "@/components/sections/Galeria";
@@ -21,6 +22,7 @@ export default function HomePage() {
         <Hero />
         <Marquee />
         <Sobre />
+        <Aplicativo />
         <Servicos />
         <Metodo />
         <Galeria />

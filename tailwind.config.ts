@@ -17,6 +17,7 @@ const config: Config = {
       fontFamily: {
         serif: ["var(--font-playfair)", "Georgia", "serif"],
         sans: ["var(--font-jakarta)", "system-ui", "sans-serif"],
+        mono: ["var(--font-mono)", "ui-monospace", "SFMono-Regular", "monospace"],
       },
       keyframes: {
         marquee: { from: { transform: "translateX(0)" }, to: { transform: "translateX(-50%)" } },
@@ -32,6 +33,14 @@ const config: Config = {
           from: { opacity: "0", transform: "translateY(18px)" },
           to: { opacity: "1", transform: "none" },
         },
+        scan: {
+          "0%": { transform: "translateY(-120%)" },
+          "100%": { transform: "translateY(520%)" },
+        },
+        shine: {
+          from: { backgroundPosition: "0% 50%" },
+          to: { backgroundPosition: "200% 50%" },
+        },
         "wa-pulse": {
           "0%,100%": { boxShadow: "0 0 0 0 rgba(95,227,27,.35)" },
           "50%": { boxShadow: "0 0 0 14px rgba(95,227,27,0)" },
@@ -43,6 +52,8 @@ const config: Config = {
         "word-up": "word-up .9s cubic-bezier(.2,.8,.2,1) both",
         "fade-up": "fade-up .9s cubic-bezier(.2,.8,.2,1) both",
         "wa-pulse": "wa-pulse 3.2s ease-in-out infinite",
+        scan: "scan 5s linear infinite",
+        shine: "shine 6s linear infinite",
       },
     },
   },

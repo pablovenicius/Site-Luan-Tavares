@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Playfair_Display, Plus_Jakarta_Sans } from "next/font/google";
+import { JetBrains_Mono, Playfair_Display, Plus_Jakarta_Sans } from "next/font/google";
 import { siteConfig } from "@/config/site";
 import { getStructuredData } from "@/lib/structured-data";
 import "./globals.css";
@@ -18,6 +18,13 @@ const jakarta = Plus_Jakarta_Sans({
   display: "swap",
 });
 
+const mono = JetBrains_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
+  variable: "--font-mono",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: siteConfig.title,
@@ -29,7 +36,7 @@ export const metadata: Metadata = {
     locale: "pt_BR",
     title: siteConfig.brand,
     description:
-      "Treino personalizado presencial e consultoria online. Planejamento, acompanhamento e evolução consistente.",
+      "Consultoria online com aplicativo personalizado e treino presencial em Aracaju. Planejamento, acompanhamento e evolução consistente.",
     images: [{ url: siteConfig.ogImage, width: 1200, height: 630, alt: siteConfig.brand }],
   },
   twitter: {
@@ -45,7 +52,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   const structuredData = getStructuredData();
 
   return (
-    <html lang="pt-BR" className={`${playfair.variable} ${jakarta.variable}`}>
+    <html lang="pt-BR" className={`${playfair.variable} ${jakarta.variable} ${mono.variable}`}>
       <head>
         <script
           type="application/ld+json"

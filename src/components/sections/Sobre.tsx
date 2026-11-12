@@ -3,19 +3,23 @@ import { whatsappLinks } from "@/lib/whatsapp";
 import { IconCheck } from "@/components/icons";
 import { Photo } from "@/components/ui/Photo";
 import { Reveal } from "@/components/ui/Reveal";
+import { SectionLabel } from "@/components/ui/SectionLabel";
 import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
 
 const pontos = [
-  "Treino personalizado no aplicativo, montado a partir da sua rotina",
+  "Aplicativo personalizado com o seu treino, montado a partir da sua rotina",
   "Acompanhamento à distância, com ajustes a cada fase",
   "Também atendo presencial em Aracaju, se você preferir",
 ];
 
 export function Sobre() {
   return (
-    <section id="sobre" className="mx-auto max-w-[1240px] px-5 py-[clamp(80px,10vw,150px)]">
-      <div className="grid items-center gap-16 lg:grid-cols-[.9fr_1.1fr] lg:gap-24">
-        <Reveal variant="left" className="relative mx-auto w-full max-w-[480px] lg:max-w-none">
+    <section id="sobre" className="mx-auto max-w-[1240px] px-5 py-[clamp(52px,8vw,116px)]">
+      <div className="grid items-center gap-12 lg:grid-cols-[.9fr_1.1fr] lg:gap-24">
+        <Reveal
+          variant="left"
+          className={`relative mx-auto w-full max-w-[480px] lg:max-w-none ${siteConfig.photos.sobre ? "" : "hidden lg:block"}`}
+        >
           <Photo
             src={siteConfig.photos.sobre}
             alt="Luan Tavares orientando um aluno"
@@ -31,11 +35,8 @@ export function Sobre() {
 
         <div>
           <Reveal>
-            <p className="mb-5 flex items-center gap-3 text-xs font-bold uppercase tracking-[.28em] text-lime">
-              <span className="h-px w-10 bg-lime" />
-              Sobre
-            </p>
-            <h2 className="mb-6 font-serif text-[clamp(32px,4.6vw,60px)] font-bold leading-[1.06] text-fg">
+            <SectionLabel index="01">Sobre</SectionLabel>
+            <h2 className="mb-6 font-serif text-[clamp(30px,4.2vw,54px)] font-bold leading-[1.06] text-fg">
               Mais do que passar exercícios,{" "}
               <span className="italic text-lime">acompanho o seu processo.</span>
             </h2>

@@ -7,6 +7,11 @@ html {
   scroll-padding-top: 84px;
 }
 
+html {
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+
 body {
   background: #0e1013;
   -webkit-font-smoothing: antialiased;
@@ -103,6 +108,57 @@ button {
   opacity: 1;
 }
 
+/* No toque (celular) não existe hover: desliga o brilho preso do cursor */
+@media (hover: none) {
+  .spot::before {
+    display: none;
+  }
+}
+
+/* ---------- Visual tech ---------- */
+.bg-grid {
+  background-image: linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+/* Borda luminosa que gira ao redor do card em destaque */
+@property --a {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+.beam {
+  position: relative;
+}
+.beam::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.5px;
+  pointer-events: none;
+  background: conic-gradient(from var(--a), transparent 0 62%, rgba(168, 255, 31, 0.95) 82%, transparent 100%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+  animation: beam-spin 7s linear infinite;
+}
+@keyframes beam-spin {
+  to {
+    --a: 360deg;
+  }
+}
+
+/* Texto com brilho lima em movimento */
+.text-shine {
+  background-image: linear-gradient(90deg, #5fe31b, #c8ff6b, #a8ff1f, #5fe31b);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
 /* Grão sutil para dar profundidade aos fundos escuros */
 .grain::after {
   content: "";
@@ -126,6 +182,11 @@ button {
     transform: none !important;
     clip-path: none !important;
   }
+  .beam::before {
+    animation: none !important;
+  }
+  .animate-scan,
+  .animate-shine,
   .animate-marquee,
   .animate-floaty,
   .animate-word-up,

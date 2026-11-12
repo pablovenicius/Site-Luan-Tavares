@@ -4,7 +4,12 @@ export const faqItems = [
   {
     pergunta: "Como funciona a consultoria online?",
     resposta:
-      "Você recebe o treino personalizado por aplicativo, com vídeos demonstrativos, orientações para treinar com segurança e acompanhamento à distância.",
+      "Você recebe o treino personalizado em um aplicativo próprio, com vídeos demonstrativos, orientações para treinar com segurança e acompanhamento à distância.",
+  },
+  {
+    pergunta: "Como é o aplicativo?",
+    resposta:
+      "É um aplicativo personalizado para o seu treino. Você consulta os exercícios no celular, com vídeos demonstrativos, e treina onde estiver com mais segurança.",
   },
   {
     pergunta: "Como funciona o acompanhamento presencial?",
@@ -20,11 +25,6 @@ export const faqItems = [
     pergunta: "E se eu tiver limitações ou lesões?",
     resposta:
       "O planejamento considera suas limitações. Em caso de lesão, dor ou condição de saúde, recomendo a liberação médica antes de iniciar e adapto os exercícios à orientação recebida.",
-  },
-  {
-    pergunta: "Como é a avaliação física?",
-    resposta:
-      "É uma conversa somada a medições e testes simples para entender seu estado atual. Serve de base para o planejamento e para acompanhar a sua evolução.",
   },
   {
     pergunta: "Onde você atende?",

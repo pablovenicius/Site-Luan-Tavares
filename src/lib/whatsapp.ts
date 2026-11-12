@@ -10,14 +10,12 @@ export const whatsappMessages = {
   presencial:
     "Olá, Luan! Vim pelo site e quero treinar presencial. Pode me falar sobre os planos de acompanhamento?",
   online: "Olá, Luan! Vim pelo site e tenho interesse na consultoria online. Como funciona?",
-  avaliacao: "Olá, Luan! Vim pelo site e gostaria de agendar uma avaliação física.",
 } as const;
 
 export const whatsappLinks = {
   geral: buildWhatsAppUrl(whatsappMessages.geral),
   presencial: buildWhatsAppUrl(whatsappMessages.presencial),
   online: buildWhatsAppUrl(whatsappMessages.online),
-  avaliacao: buildWhatsAppUrl(whatsappMessages.avaliacao),
 } as const;
 
 /** Mensagem final enviada pelo formulário de contato. */

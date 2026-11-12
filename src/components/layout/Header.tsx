@@ -46,7 +46,7 @@ export function Header() {
         <div
           className={cn(
             "mx-auto flex max-w-[1240px] items-center justify-between gap-6 px-5 transition-all duration-500",
-            scrolled ? "py-2.5" : "py-5"
+            scrolled ? "py-2" : "py-3.5 md:py-5"
           )}
         >
           <a href="#topo" aria-label={`${siteConfig.brand}, início`} className="flex items-center gap-3">
@@ -57,11 +57,11 @@ export function Header() {
               height={2187}
               sizes="140px"
               priority
-              className={cn("w-auto transition-all duration-500", scrolled ? "h-[54px]" : "h-[68px]")}
+              className={cn("w-auto transition-all duration-500", scrolled ? "h-[44px] md:h-[54px]" : "h-[56px] md:h-[68px]")}
             />
           </a>
 
-          <nav aria-label="Navegação principal" className="hidden items-center gap-9 md:flex">
+          <nav aria-label="Navegação principal" className="hidden items-center gap-8 md:flex">
             {navLinks.map((l) => (
               <a
                 key={l.href}
@@ -75,6 +75,15 @@ export function Header() {
           </nav>
 
           <div className="flex items-center gap-2.5">
+            <a
+              href={siteConfig.instagramUrl}
+              target="_blank"
+              rel="noopener"
+              aria-label={`Instagram @${siteConfig.instagram}`}
+              className="grid h-11 w-11 place-items-center rounded-full border border-white/15 text-fg-muted transition-colors hover:border-lime/50 hover:text-lime"
+            >
+              <IconInstagram className="h-5 w-5" />
+            </a>
             <div className="hidden md:block">
               <WhatsAppButton href={whatsappLinks.geral} section="header" size="md">
                 Chamar no WhatsApp
@@ -126,10 +135,10 @@ export function Header() {
             Chamar no WhatsApp
           </WhatsAppButton>
           <a
-            href={`https://instagram.com/${siteConfig.instagram}`}
+            href={siteConfig.instagramUrl}
             target="_blank"
             rel="noopener"
-            className="flex items-center justify-center gap-2.5 py-2 text-sm font-semibold text-fg-muted"
+            className="flex items-center justify-center gap-2.5 rounded-full border border-white/15 py-3.5 text-sm font-semibold text-fg-muted"
           >
             <IconInstagram className="h-5 w-5 text-lime" />@{siteConfig.instagram}
           </a>

@@ -7,7 +7,7 @@ import { IconInstagram, IconWhatsApp } from "@/components/icons";
 import { Reveal } from "@/components/ui/Reveal";
 import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
 
-const modalidades = ["Consultoria online", "Personal presencial (Aracaju)", "Avaliação física", "Ainda não sei"];
+const modalidades = ["Consultoria online", "Personal presencial (Aracaju)", "Ainda não sei"];
 
 const campo =
   "min-h-[52px] w-full rounded-xl border border-white/[.14] bg-ink px-4 text-base text-fg outline-none transition-colors placeholder:text-fg-faint focus:border-lime";
@@ -38,9 +38,13 @@ export function Contato() {
       id="contato"
       className="relative isolate overflow-hidden bg-[radial-gradient(900px_520px_at_50%_0%,rgba(168,255,31,.13),transparent_65%)]"
     >
-      <div className="mx-auto grid max-w-[1240px] items-start gap-16 px-5 py-[clamp(80px,10vw,150px)] lg:grid-cols-[1fr_1fr] lg:gap-24">
+      <div
+        aria-hidden="true"
+        className="bg-grid pointer-events-none absolute inset-0 -z-10 [mask-image:radial-gradient(ellipse_at_50%_0%,#000,transparent_70%)]"
+      />
+      <div className="mx-auto grid max-w-[1240px] items-start gap-12 px-5 py-[clamp(52px,8vw,116px)] lg:grid-cols-[1fr_1fr] lg:gap-24">
         <Reveal>
-          <h2 className="mb-6 font-serif text-[clamp(40px,6vw,84px)] font-bold leading-[1.02] text-fg">
+          <h2 className="mb-6 font-serif text-[clamp(38px,5.4vw,76px)] font-bold leading-[1.02] text-fg">
             Pronto para <span className="italic text-lime">começar?</span>
           </h2>
           <p className="mb-10 max-w-[46ch] text-lg leading-relaxed text-fg-muted">
@@ -48,18 +52,29 @@ export function Contato() {
             em Aracaju. A resposta vem direto no WhatsApp.
           </p>
 
-          <WhatsAppButton href={whatsappLinks.online} section="cta-final" size="lg" arrow>
-            Chamar no WhatsApp
-          </WhatsAppButton>
+          <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-3.5">
+            <WhatsAppButton href={whatsappLinks.online} section="cta-final" size="lg" arrow className="w-full sm:w-auto">
+              Chamar no WhatsApp
+            </WhatsAppButton>
+            <a
+              href={siteConfig.instagramUrl}
+              target="_blank"
+              rel="noopener"
+              className="group inline-flex min-h-[56px] w-full items-center justify-center gap-2.5 rounded-full border border-white/20 px-7 sm:w-auto text-base font-bold text-fg transition-all duration-300 hover:border-lime/70 hover:bg-lime/[.07] hover:text-lime"
+            >
+              <IconInstagram className="h-5 w-5 text-lime" />
+              Instagram
+            </a>
+          </div>
 
-          <ul className="mt-12 grid gap-4 text-[15px]">
+          <ul className="mt-10 grid gap-3 font-mono text-[13px] tracking-wide">
             <li className="flex items-center gap-3 text-fg-muted">
               <IconWhatsApp className="h-5 w-5 text-lime" />
               {siteConfig.whatsappDisplay}
             </li>
             <li>
               <a
-                href={`https://instagram.com/${siteConfig.instagram}`}
+                href={siteConfig.instagramUrl}
                 target="_blank"
                 rel="noopener"
                 className="flex items-center gap-3 text-fg-muted transition-colors hover:text-lime"
@@ -76,7 +91,7 @@ export function Contato() {
             noValidate
             className="grid gap-5 rounded-3xl border border-white/10 bg-ink-card/80 p-7 backdrop-blur-xl sm:p-9"
           >
-            <p className="text-xs font-bold uppercase tracking-[.22em] text-lime">
+            <p className="font-mono text-[11px] font-medium uppercase tracking-[.26em] text-lime">
               Prefere que eu te chame?
             </p>
 

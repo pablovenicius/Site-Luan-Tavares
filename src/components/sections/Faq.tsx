@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { faqItems } from "@/lib/structured-data";
 import { Reveal } from "@/components/ui/Reveal";
+import { SectionLabel } from "@/components/ui/SectionLabel";
 import { cn } from "@/lib/cn";
 
 export function Faq() {
@@ -10,13 +11,10 @@ export function Faq() {
 
   return (
     <section id="faq" className="border-y border-white/[.06] bg-ink-alt">
-      <div className="mx-auto grid max-w-[1240px] gap-14 px-5 py-[clamp(80px,10vw,150px)] lg:grid-cols-[.8fr_1.2fr] lg:gap-24">
+      <div className="mx-auto grid max-w-[1240px] gap-14 px-5 py-[clamp(52px,8vw,116px)] lg:grid-cols-[.8fr_1.2fr] lg:gap-24">
         <Reveal className="lg:sticky lg:top-32 lg:self-start">
-          <p className="mb-5 flex items-center gap-3 text-xs font-bold uppercase tracking-[.28em] text-lime">
-            <span className="h-px w-10 bg-lime" />
-            Dúvidas
-          </p>
-          <h2 className="font-serif text-[clamp(32px,4.6vw,60px)] font-bold leading-[1.06] text-fg">
+          <SectionLabel index="05">Dúvidas</SectionLabel>
+          <h2 className="font-serif text-[clamp(30px,4.2vw,54px)] font-bold leading-[1.06] text-fg">
             Antes de <span className="italic text-lime">começar.</span>
           </h2>
         </Reveal>

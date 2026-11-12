@@ -58,8 +58,34 @@ export const IconApp = (p: IconProps) => (
     <path d="M10 9.5l4 2.2-4 2.3z" />
   </svg>
 );
-export const IconBarChart = (p: IconProps) => (
+export const IconPlay = (p: IconProps) => (
   <svg {...base} {...p}>
-    <path d="M4 20V10M10 20V4M16 20v-7M22 20H2" />
+    <circle cx="12" cy="12" r="9" />
+    <path d="M10.2 8.6l5 3.4-5 3.4z" />
+  </svg>
+);
+export const IconSliders = (p: IconProps) => (
+  <svg {...base} {...p}>
+    <path d="M4 7h9M17 7h3M4 17h3M11 17h9" />
+    <circle cx="15" cy="7" r="2" />
+    <circle cx="9" cy="17" r="2" />
+  </svg>
+);
+export const IconChat = (p: IconProps) => (
+  <svg {...base} {...p}>
+    <path d="M4 5.5h16v10H12l-4.5 3.5v-3.5H4z" />
+    <path d="M8 9.5h8M8 12.5h5" />
+  </svg>
+);
+export const IconGlobe = (p: IconProps) => (
+  <svg {...base} {...p}>
+    <circle cx="12" cy="12" r="9" />
+    <path d="M3 12h18M12 3c2.6 2.6 3.8 5.6 3.8 9s-1.2 6.4-3.8 9c-2.6-2.6-3.8-5.6-3.8-9S9.4 5.6 12 3z" />
+  </svg>
+);
+export const IconPin = (p: IconProps) => (
+  <svg {...base} {...p}>
+    <path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z" />
+    <circle cx="12" cy="10" r="2.3" />
   </svg>
 );

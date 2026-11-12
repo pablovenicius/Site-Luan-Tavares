@@ -1,4 +1,5 @@
 import { Reveal } from "@/components/ui/Reveal";
+import { SectionLabel } from "@/components/ui/SectionLabel";
 import { MetodoTimeline } from "./MetodoTimeline";
 
 const etapas = [
@@ -11,14 +12,11 @@ const etapas = [
 
 export function Metodo() {
   return (
-    <section id="metodo" className="mx-auto max-w-[1240px] px-5 py-[clamp(80px,10vw,150px)]">
+    <section id="metodo" className="mx-auto max-w-[1240px] px-5 py-[clamp(52px,8vw,116px)]">
       <div className="grid gap-16 lg:grid-cols-[.8fr_1.2fr] lg:gap-24">
         <Reveal className="lg:sticky lg:top-32 lg:self-start">
-          <p className="mb-5 flex items-center gap-3 text-xs font-bold uppercase tracking-[.28em] text-lime">
-            <span className="h-px w-10 bg-lime" />
-            Método
-          </p>
-          <h2 className="mb-5 font-serif text-[clamp(32px,4.6vw,60px)] font-bold leading-[1.06] text-fg">
+          <SectionLabel index="04">Método</SectionLabel>
+          <h2 className="mb-5 font-serif text-[clamp(30px,4.2vw,54px)] font-bold leading-[1.06] text-fg">
             Bom treino não é{" "}
             <span className="italic text-lime">igual para todo mundo.</span>
           </h2>

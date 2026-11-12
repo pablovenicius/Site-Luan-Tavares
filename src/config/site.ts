@@ -9,7 +9,7 @@ export const siteConfig = {
   // SEO
   title: "Consultoria Online de Treino | Luan Tavares – Personal Trainer em Aracaju",
   description:
-    "Consultoria online de treino personalizado com o personal trainer Luan Tavares, para qualquer cidade do Brasil. Também atende presencial em Aracaju. Fale no WhatsApp.",
+    "Consultoria online de treino personalizado com aplicativo próprio, para qualquer cidade do Brasil, com o personal trainer Luan Tavares. Também atende presencial em Aracaju. Fale no WhatsApp.",
   // Domínio final de produção. Defina NEXT_PUBLIC_SITE_URL na hospedagem (ou troque aqui).
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.seudominio.com.br",
 
@@ -21,6 +21,7 @@ export const siteConfig = {
   whatsapp: "5579991516767",
   whatsappDisplay: "(79) 99151-6767",
   instagram: "luantavarespersonal",
+  instagramUrl: "https://instagram.com/luantavarespersonal",
 
   // Ativos
   logo: "/images/logo-luan-tavares-hd.webp", // logo completa (4311×2187, fundo transparente)
@@ -40,6 +41,7 @@ export const siteConfig = {
 
 export const navLinks = [
   { href: "#sobre", label: "Sobre" },
+  { href: "#app", label: "Aplicativo" },
   { href: "#servicos", label: "Serviços" },
   { href: "#metodo", label: "Método" },
   { href: "#faq", label: "Dúvidas" },
