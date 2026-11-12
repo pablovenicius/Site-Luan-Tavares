@@ -30,12 +30,15 @@ export const siteConfig = {
   /**
    * FOTOS — coloque os arquivos em public/images/ e informe o caminho abaixo.
    * Enquanto o campo estiver vazio, o site mostra um painel com a marca.
-   * A galeria só aparece quando houver pelo menos uma foto.
+   * A seção de fotos tem 6 vagas (Luan e alunos); vaga sem foto mostra a marca.
    */
   photos: {
     hero: null as string | null, // ex.: "/images/hero-luan.jpg"  (vertical 4:5)
     sobre: null as string | null, // ex.: "/images/sobre-luan.jpg" (vertical 4:5)
-    galeria: [] as { src: string; alt: string }[], // ex.: [{ src: "/images/treino-1.jpg", alt: "Treino de costas" }]
+    // Fotos do Luan e dos alunos. Enquanto estiver vazio, aparecem 3 espaços reservados.
+    // ex.: [{ src: "/images/treino-1.jpg", alt: "Luan orientando um aluno" }]
+    // ex.: [{ src: "/images/luan-1.jpg", alt: "Luan Tavares", legenda: "Luan" }, { src: "/images/aluno-1.jpg", alt: "Treino com aluno", legenda: "Com aluno" }]
+    galeria: [] as { src: string; alt: string; legenda?: string }[],
   },
 };
 
@@ -44,5 +47,6 @@ export const navLinks = [
   { href: "#app", label: "Aplicativo" },
   { href: "#servicos", label: "Serviços" },
   { href: "#metodo", label: "Método" },
+  { href: "#fotos", label: "Fotos" },
   { href: "#faq", label: "Dúvidas" },
 ] as const;
