@@ -1,6 +1,5 @@
 /**
  * Dados do negócio, centralizados aqui para facilitar a edição.
- * Troque os placeholders entre colchetes pelos dados reais do Luan.
  */
 export const siteConfig = {
   name: "Luan Tavares",
@@ -8,34 +7,38 @@ export const siteConfig = {
   brand: "Luan Tavares – Personal Trainer",
 
   // SEO
-  title: "Personal Trainer em [CIDADE] | Luan Tavares – Presencial e Online",
+  title: "Consultoria Online de Treino | Luan Tavares – Personal Trainer em Aracaju",
   description:
-    "Luan Tavares, Personal Trainer em [CIDADE]. Treino personalizado presencial e consultoria online para hipertrofia, emagrecimento e condicionamento. Fale no WhatsApp.",
-  // URL final de produção (ajuste antes do deploy — usada em metadata/OG e no JSON-LD)
-  url: "https://www.seudominio.com.br",
+    "Consultoria online de treino personalizado com o personal trainer Luan Tavares, para qualquer cidade do Brasil. Também atende presencial em Aracaju. Fale no WhatsApp.",
+  // Domínio final de produção. Defina NEXT_PUBLIC_SITE_URL na hospedagem (ou troque aqui).
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.seudominio.com.br",
 
-  // Dados de atendimento
+  // Atendimento
   city: "Aracaju",
-  neighborhoods: "[BAIRROS/REGIÕES]",
   cref: "004777-G/SE",
 
-  // Contato — apenas dígitos, com DDI 55 + DDD + número (ex.: 5579999999999)
+  // Contato — apenas dígitos, com DDI 55 + DDD + número
   whatsapp: "5579991516767",
+  whatsappDisplay: "(79) 99151-6767",
   instagram: "luantavarespersonal",
 
   // Ativos
-  logo: "/images/logo-luan-tavares.png",
-} as const;
+  logo: "/images/logo-luan-tavares-hd.webp", // logo completa (4311×2187, fundo transparente)
+  ogImage: "/images/og-image.jpg",
+
+  /**
+   * FOTOS — coloque os arquivos em public/images/ e informe o caminho abaixo.
+   * Enquanto o campo estiver vazio, o site mostra um painel com a marca.
+   * A galeria só aparece quando houver pelo menos uma foto.
+   */
+  photos: {
+    hero: null as string | null, // ex.: "/images/hero-luan.jpg"  (vertical 4:5)
+    sobre: null as string | null, // ex.: "/images/sobre-luan.jpg" (vertical 4:5)
+    galeria: [] as { src: string; alt: string }[], // ex.: [{ src: "/images/treino-1.jpg", alt: "Treino de costas" }]
+  },
+};
 
 export const navLinks = [
-  { href: "#sobre", label: "Sobre" },
-  { href: "#servicos", label: "Serviços" },
-  { href: "#metodo", label: "Método" },
-  { href: "#para-quem", label: "Para quem é" },
-  { href: "#contato", label: "Contato" },
-] as const;
-
-export const footerLinks = [
   { href: "#sobre", label: "Sobre" },
   { href: "#servicos", label: "Serviços" },
   { href: "#metodo", label: "Método" },

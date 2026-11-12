@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Playfair_Display, Plus_Jakarta_Sans } from "next/font/google";
 import { siteConfig } from "@/config/site";
 import { getStructuredData } from "@/lib/structured-data";
@@ -23,18 +23,23 @@ export const metadata: Metadata = {
   title: siteConfig.title,
   description: siteConfig.description,
   robots: { index: true, follow: true },
-  icons: { icon: siteConfig.logo },
+  icons: { icon: "/icon.png", apple: "/apple-icon.png" },
   openGraph: {
     type: "website",
+    locale: "pt_BR",
     title: siteConfig.brand,
     description:
       "Treino personalizado presencial e consultoria online. Planejamento, acompanhamento e evolução consistente.",
-    images: [siteConfig.logo],
+    images: [{ url: siteConfig.ogImage, width: 1200, height: 630, alt: siteConfig.brand }],
   },
   twitter: {
     card: "summary_large_image",
+    title: siteConfig.brand,
+    images: [siteConfig.ogImage],
   },
 };
+
+export const viewport: Viewport = { themeColor: "#0E1013" };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const structuredData = getStructuredData();
@@ -51,7 +56,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="min-h-screen overflow-x-hidden bg-ink font-sans text-[17px] leading-[1.65] text-fg-muted antialiased">
         <a
           href="#conteudo"
-          className="sr-only z-[200] rounded-lg bg-lime px-5 py-3 font-bold text-onlime focus:not-sr-only focus:fixed focus:left-4 focus:top-2"
+          className="sr-only z-[200] rounded-full bg-lime px-5 py-3 font-bold text-onlime focus:not-sr-only focus:fixed focus:left-4 focus:top-2"
         >
           Pular para o conteúdo
         </a>

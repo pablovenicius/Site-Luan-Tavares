@@ -1,91 +1,126 @@
-import Image from "next/image";
 import { siteConfig } from "@/config/site";
 import { whatsappLinks } from "@/lib/whatsapp";
 import { IconCheck } from "@/components/icons";
 import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
-import { ImagePlaceholder } from "@/components/ui/ImagePlaceholder";
+import { Photo } from "@/components/ui/Photo";
+import { Spot } from "@/components/ui/Spot";
 
-const checklist = [
-  "Atendimento presencial e online",
-  "Treino 100% personalizado",
-  "Acompanhamento próximo",
-];
+const beneficios = ["Treino 100% personalizado", "Acompanhamento próximo", "Também presencial em Aracaju"];
+
+/** Palavras que entram uma a uma, com máscara (efeito de "subida"). */
+function Words({ text, start = 0, className }: { text: string; start?: number; className?: string }) {
+  return (
+    <>
+      {text.split(" ").map((w, i) => (
+        <span key={`${w}-${i}`} className="inline-block overflow-hidden pb-[.12em] align-bottom">
+          <span
+            className={`inline-block animate-word-up ${className ?? ""}`}
+            style={{ animationDelay: `${start + i * 70}ms` }}
+          >
+            {w}&nbsp;
+          </span>
+        </span>
+      ))}
+    </>
+  );
+}
 
 export function Hero() {
   return (
-    <section
-      id="topo"
-      className="relative overflow-hidden border-b border-fg/[.06] bg-[radial-gradient(1100px_620px_at_78%_8%,rgba(95,227,27,.10),transparent_62%),linear-gradient(180deg,#14171C_0%,#191D23_60%,#14171C_100%)]"
+    <Spot
+      as="section"
+      className="grain relative isolate overflow-hidden bg-[radial-gradient(900px_560px_at_85%_10%,rgba(168,255,31,.10),transparent_60%),radial-gradient(700px_500px_at_0%_100%,rgba(95,227,27,.06),transparent_60%)]"
     >
-      {/* textura de pontos decorativa */}
+      <div id="topo" className="absolute top-0" />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 opacity-[.55] [background-image:radial-gradient(rgba(242,244,245,.045)_1px,transparent_1px)] [background-size:4px_4px]"
-      />
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -right-[60px] -top-20 h-[520px] w-[520px] rotate-[18deg] border-l border-t border-lime/[.22] [border-top-color:rgba(168,255,31,.10)]"
+        className="pointer-events-none absolute inset-0 -z-10 opacity-50 [background-image:linear-gradient(rgba(255,255,255,.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.03)_1px,transparent_1px)] [background-size:64px_64px] [mask-image:radial-gradient(ellipse_at_70%_30%,#000,transparent_70%)]"
       />
 
-      <div className="relative mx-auto grid max-w-[1200px] grid-cols-[repeat(auto-fit,minmax(330px,1fr))] items-center gap-[clamp(36px,5vw,64px)] px-5 pb-[clamp(56px,7vw,104px)] pt-[clamp(48px,7vw,96px)]">
+      <div className="mx-auto grid min-h-[100svh] max-w-[1240px] items-center gap-14 px-5 pb-20 pt-32 lg:grid-cols-[1.15fr_.85fr] lg:gap-10 lg:pt-28">
         <div>
-          <Image
-            src={siteConfig.logo}
-            alt={siteConfig.brand}
-            width={1400}
-            height={768}
-            priority
-            className="mb-7 block h-auto w-[min(340px,72%)]"
-          />
-          <p className="mb-3.5 text-xs font-bold uppercase tracking-[.24em] text-lime">
-            Presencial em {siteConfig.city} · Consultoria online
+          <p
+            className="mb-7 inline-flex animate-fade-up items-center gap-3 text-xs font-bold uppercase tracking-[.28em] text-lime"
+            style={{ animationDelay: "100ms" }}
+          >
+            <span className="h-px w-10 bg-lime" />
+            Consultoria online · Personal Trainer
           </p>
-          <h1 className="mb-5 text-balance font-serif text-[clamp(34px,5.1vw,60px)] font-bold leading-[1.08] text-fg">
-            Treino personalizado para o{" "}
-            <span className="bg-gradient-to-r from-lime to-lime-dark bg-clip-text text-transparent">
-              seu objetivo
-            </span>
-            , do seu jeito e com acompanhamento de perto.
+
+          <h1 className="mb-7 font-serif text-[clamp(42px,7.2vw,94px)] font-bold leading-[1.02] tracking-[-.01em] text-fg">
+            <Words text="Seu treino online," start={200} />
+            <br />
+            <Words
+              text="feito para você."
+              start={560}
+              className="bg-gradient-to-r from-lime via-lime-soft to-lime-dark bg-clip-text italic text-transparent"
+            />
           </h1>
-          <p className="mb-8 max-w-[46ch] text-pretty text-[clamp(16px,1.6vw,19px)] text-fg-muted">
-            Planejamento feito a partir da sua rotina, do seu condicionamento e das suas
-            necessidades. Presencial em {siteConfig.city} ou consultoria online, com
-            acompanhamento próximo em cada etapa.
+
+          <p
+            className="mb-10 max-w-[48ch] animate-fade-up text-[clamp(17px,1.5vw,20px)] leading-relaxed text-fg-muted"
+            style={{ animationDelay: "900ms" }}
+          >
+            Consultoria online com treino personalizado no aplicativo e acompanhamento de perto, de
+            onde você estiver. Prefere treinar ao vivo? Também atendo presencial em {siteConfig.city}.
           </p>
-          <div className="mb-[34px] flex flex-wrap gap-3.5">
-            <WhatsAppButton href={whatsappLinks.geral} section="hero" size="lg">
-              Quero começar agora
+
+          <div
+            className="mb-10 flex animate-fade-up flex-wrap gap-4"
+            style={{ animationDelay: "1050ms" }}
+          >
+            <WhatsAppButton href={whatsappLinks.online} section="hero" size="lg" arrow>
+              Quero a consultoria online
             </WhatsAppButton>
-            <a
-              href="#servicos"
-              className="inline-flex min-h-[52px] items-center gap-2.5 rounded-xl border border-fg/30 px-7 text-base font-bold text-fg transition-all hover:border-lime hover:bg-lime/[.07]"
+            <WhatsAppButton
+              href={whatsappLinks.presencial}
+              section="hero-presencial"
+              variant="outline"
+              size="lg"
+              icon={false}
             >
-              Conhecer serviços
-            </a>
+              Treino presencial
+            </WhatsAppButton>
           </div>
-          <ul className="flex flex-wrap gap-x-[22px] gap-y-2.5">
-            {checklist.map((item) => (
-              <li key={item} className="flex items-center gap-2.5 text-sm font-semibold text-fg-muted">
-                <IconCheck className="h-[17px] w-[17px] flex-none text-lime" />
-                {item}
+
+          <ul
+            className="flex animate-fade-up flex-wrap gap-x-7 gap-y-3"
+            style={{ animationDelay: "1200ms" }}
+          >
+            {beneficios.map((b) => (
+              <li key={b} className="flex items-center gap-2.5 text-sm font-semibold text-fg-muted">
+                <IconCheck className="h-4 w-4 text-lime" />
+                {b}
               </li>
             ))}
           </ul>
         </div>
 
-        <div className="relative">
+        <div className="relative mx-auto w-full max-w-[460px] animate-fade-up lg:max-w-none" style={{ animationDelay: "500ms" }}>
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute -inset-3.5 -rotate-2 rounded-[20px] border border-lime/[.28]"
+            className="absolute -inset-5 -z-10 rotate-3 rounded-[28px] border border-lime/20"
           />
-          <div className="relative aspect-[4/5] overflow-hidden rounded-2xl shadow-[0_30px_70px_rgba(0,0,0,.5)]">
-            <ImagePlaceholder label="Foto do Luan treinando — vertical 4:5, luz lateral, fundo escuro" />
+          <Photo
+            src={siteConfig.photos.hero}
+            alt="Luan Tavares, personal trainer"
+            ratio="4/5"
+            priority
+            speed={0.1}
+          />
+          <div className="absolute -left-4 top-[14%] hidden animate-floaty rounded-2xl border border-white/10 bg-ink/80 px-4 py-3 shadow-2xl backdrop-blur-xl sm:block">
+            <p className="text-[10px] font-bold uppercase tracking-[.2em] text-lime">Consultoria online</p>
+            <p className="text-sm font-semibold text-fg">Todo o Brasil</p>
           </div>
-          <p className="mt-3 px-0.5 text-xs tracking-wide text-fg-subtle">
-            Substitua o placeholder por uma foto profissional do Luan (proporção 4:5, fundo escuro).
-          </p>
+          <div
+            className="absolute -right-3 bottom-[12%] hidden animate-floaty rounded-2xl border border-white/10 bg-ink/80 px-4 py-3 shadow-2xl backdrop-blur-xl sm:block"
+            style={{ animationDelay: "-3s" }}
+          >
+            <p className="text-[10px] font-bold uppercase tracking-[.2em] text-lime">Presencial</p>
+            <p className="text-sm font-semibold text-fg">{siteConfig.city} e região</p>
+          </div>
         </div>
       </div>
-    </section>
+    </Spot>
   );
 }

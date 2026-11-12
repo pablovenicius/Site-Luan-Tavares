@@ -1,109 +1,140 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { siteConfig, navLinks } from "@/config/site";
 import { whatsappLinks } from "@/lib/whatsapp";
-import { IconMenu, IconInstagram } from "@/components/icons";
+import { IconMenu, IconClose, IconInstagram } from "@/components/icons";
 import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
+import { cn } from "@/lib/cn";
 
 export function Header() {
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
+
+  // encolhe ao rolar; esconde ao descer e volta ao subir
+  useEffect(() => {
+    let last = window.scrollY;
+    const onScroll = () => {
+      const y = window.scrollY;
+      setScrolled(y > 24);
+      setHidden(y > last && y > 420);
+      last = y;
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
 
   return (
-    <header className="sticky top-0 z-[100] border-b border-fg/[.08] bg-ink/[.88] backdrop-blur-lg">
-      <div className="mx-auto flex max-w-[1200px] items-center justify-between gap-5 px-5 py-2.5">
-        <a href="#topo" aria-label={`${siteConfig.brand}, início`} className="block flex-none">
-          <Image
-            src={siteConfig.logo}
-            alt={siteConfig.brand}
-            width={1400}
-            height={768}
-            priority
-            className="block h-14 w-auto"
-          />
-        </a>
+    <>
+      <header
+        className={cn(
+          "fixed inset-x-0 top-0 z-[100] transition-all duration-500",
+          scrolled ? "border-b border-white/[.07] bg-ink/75 backdrop-blur-xl" : "bg-transparent",
+          hidden && !open ? "-translate-y-full" : "translate-y-0"
+        )}
+      >
+        <div
+          className={cn(
+            "mx-auto flex max-w-[1240px] items-center justify-between gap-6 px-5 transition-all duration-500",
+            scrolled ? "py-2.5" : "py-5"
+          )}
+        >
+          <a href="#topo" aria-label={`${siteConfig.brand}, início`} className="flex items-center gap-3">
+            <Image
+              src={siteConfig.logo}
+              alt={siteConfig.brand}
+              width={4311}
+              height={2187}
+              sizes="140px"
+              priority
+              className={cn("w-auto transition-all duration-500", scrolled ? "h-[54px]" : "h-[68px]")}
+            />
+          </a>
 
-        <nav aria-label="Navegação principal" className="hidden items-center gap-7 md:flex">
-          {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="text-sm font-semibold tracking-wide text-fg-muted transition-colors hover:text-fg"
+          <nav aria-label="Navegação principal" className="hidden items-center gap-9 md:flex">
+            {navLinks.map((l) => (
+              <a
+                key={l.href}
+                href={l.href}
+                className="group relative py-1 text-sm font-semibold text-fg-muted transition-colors hover:text-fg"
+              >
+                {l.label}
+                <span className="absolute inset-x-0 -bottom-0.5 h-px origin-left scale-x-0 bg-lime transition-transform duration-300 group-hover:scale-x-100" />
+              </a>
+            ))}
+          </nav>
+
+          <div className="flex items-center gap-2.5">
+            <div className="hidden md:block">
+              <WhatsAppButton href={whatsappLinks.geral} section="header" size="md">
+                Chamar no WhatsApp
+              </WhatsAppButton>
+            </div>
+            <button
+              type="button"
+              aria-label={open ? "Fechar menu" : "Abrir menu"}
+              aria-expanded={open}
+              onClick={() => setOpen((v) => !v)}
+              className="grid h-11 w-11 place-items-center rounded-full border border-white/15 text-fg md:hidden"
             >
-              {link.label}
+              {open ? <IconClose className="h-5 w-5" /> : <IconMenu className="h-5 w-5" />}
+            </button>
+          </div>
+        </div>
+      </header>
+
+      {/* menu mobile em tela cheia */}
+      <div
+        className={cn(
+          "fixed inset-0 z-[99] flex flex-col justify-center bg-ink/95 px-8 backdrop-blur-2xl transition-all duration-500 md:hidden",
+          open ? "visible opacity-100" : "invisible opacity-0"
+        )}
+      >
+        <nav aria-label="Menu" className="grid gap-1">
+          {navLinks.map((l, i) => (
+            <a
+              key={l.href}
+              href={l.href}
+              onClick={() => setOpen(false)}
+              style={{ transitionDelay: open ? `${120 + i * 60}ms` : "0ms" }}
+              className={cn(
+                "border-b border-white/[.07] py-5 font-serif text-4xl font-bold text-fg transition-all duration-500",
+                open ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"
+              )}
+            >
+              {l.label}
             </a>
           ))}
         </nav>
-
-        <div className="flex items-center gap-2.5">
-          {/* Instagram e WhatsApp: só na barra do topo a partir de md (desktop/tablet).
-              No mobile eles moram dentro do menu hambúrguer, abaixo. */}
-          <a
-            href={`https://instagram.com/${siteConfig.instagram}`}
-            target="_blank"
-            rel="noopener"
-            aria-label={`Instagram de ${siteConfig.brand}`}
-            className="hidden h-[46px] w-[46px] flex-none place-items-center rounded-[10px] border border-fg/[.22] text-fg transition-colors hover:border-lime hover:text-lime md:grid"
-          >
-            <IconInstagram className="h-5 w-5" />
-          </a>
-
-          <div className="hidden md:block">
-            <WhatsAppButton href={whatsappLinks.geral} section="header" size="md">
-              Chamar no WhatsApp
-            </WhatsAppButton>
-          </div>
-
-          <button
-            type="button"
-            aria-label="Abrir menu"
-            aria-expanded={menuOpen}
-            onClick={() => setMenuOpen((open) => !open)}
-            className="grid h-[46px] w-[46px] place-items-center rounded-[10px] border border-fg/[.22] bg-transparent md:hidden"
-          >
-            <IconMenu className="h-5 w-5 text-fg" strokeWidth={1.8} />
-          </button>
-        </div>
-      </div>
-
-      {menuOpen && (
-        <nav
-          aria-label="Navegação principal"
-          className="grid gap-0.5 border-t border-fg/[.08] bg-ink-alt px-5 pb-6 pt-2.5 md:hidden"
-        >
-          {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              onClick={() => setMenuOpen(false)}
-              className="border-b border-fg/[.06] py-3.5 px-1 font-semibold text-fg"
-            >
-              {link.label}
-            </a>
-          ))}
-
-          <a
-            href={`https://instagram.com/${siteConfig.instagram}`}
-            target="_blank"
-            rel="noopener"
-            onClick={() => setMenuOpen(false)}
-            className="flex items-center gap-2.5 border-b border-fg/[.06] py-3.5 px-1 font-semibold text-fg"
-          >
-            <IconInstagram className="h-[18px] w-[18px] text-lime" />
-            Instagram
-          </a>
-
+        <div className="mt-10 grid gap-4">
           <WhatsAppButton
             href={whatsappLinks.geral}
             section="menu-mobile"
             size="lg"
-            className="mt-4 w-full justify-center"
+            className="w-full"
           >
             Chamar no WhatsApp
           </WhatsAppButton>
-        </nav>
-      )}
-    </header>
+          <a
+            href={`https://instagram.com/${siteConfig.instagram}`}
+            target="_blank"
+            rel="noopener"
+            className="flex items-center justify-center gap-2.5 py-2 text-sm font-semibold text-fg-muted"
+          >
+            <IconInstagram className="h-5 w-5 text-lime" />@{siteConfig.instagram}
+          </a>
+        </div>
+      </div>
+    </>
   );
 }

@@ -5,10 +5,7 @@ declare global {
   }
 }
 
-/**
- * Dispara o evento de clique no WhatsApp para GA4 e Meta Pixel,
- * quando os respectivos scripts estiverem presentes na página.
- */
+/** Dispara o clique no WhatsApp para GA4 e Meta Pixel, se estiverem na página. */
 export function trackWhatsAppClick(secao: string): void {
   if (typeof window === "undefined") return;
   window.gtag?.("event", "whatsapp_click", { secao });

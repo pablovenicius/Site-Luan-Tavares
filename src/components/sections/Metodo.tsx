@@ -1,67 +1,34 @@
 import { Reveal } from "@/components/ui/Reveal";
+import { MetodoTimeline } from "./MetodoTimeline";
 
 const etapas = [
-  {
-    numero: "01",
-    titulo: "Avaliação",
-    texto: "Entendo seu objetivo, sua rotina, seu histórico e suas limitações.",
-    opacidade: "opacity-90",
-  },
-  {
-    numero: "02",
-    titulo: "Planejamento personalizado",
-    texto: "Montagem do treino sob medida, com progressão definida.",
-    opacidade: "opacity-75",
-  },
-  {
-    numero: "03",
-    titulo: "Acompanhamento",
-    texto: "Execução correta, carga adequada e presença no processo.",
-    opacidade: "opacity-[.55]",
-  },
-  {
-    numero: "04",
-    titulo: "Ajustes",
-    texto: "O treino muda quando você muda. Revisões conforme a resposta.",
-    opacidade: "opacity-40",
-  },
-  {
-    numero: "05",
-    titulo: "Evolução consistente",
-    texto: "Resultado vem de continuidade, não de esforço isolado.",
-    opacidade: "opacity-25",
-  },
-];
+  { numero: "01", titulo: "Avaliação", texto: "Entendo seu objetivo, sua rotina, seu histórico e suas limitações." },
+  { numero: "02", titulo: "Planejamento", texto: "Treino sob medida, com progressão definida desde o primeiro dia." },
+  { numero: "03", titulo: "Acompanhamento", texto: "Execução correta, carga adequada e presença em todo o processo." },
+  { numero: "04", titulo: "Ajustes", texto: "O treino muda quando você muda: revisões conforme a sua resposta." },
+  { numero: "05", titulo: "Evolução", texto: "Resultado vem de continuidade, não de esforço isolado." },
+] as const;
 
 export function Metodo() {
   return (
-    <Reveal>
-      <section id="metodo" className="mx-auto max-w-[1200px] px-5 py-[clamp(64px,8vw,116px)]">
-        <p className="mb-3.5 text-xs font-bold uppercase tracking-[.24em] text-lime">
-          Método de trabalho
-        </p>
-        <h2 className="mb-4 max-w-[22ch] font-serif text-[clamp(28px,4vw,48px)] font-bold leading-[1.12] text-fg">
-          Um bom treinamento não deve ser igual para todo mundo
-        </h2>
-        <p className="mb-12 max-w-[54ch] text-fg-muted">
-          Por isso o processo tem etapas claras — e todas passam por você.
-        </p>
+    <section id="metodo" className="mx-auto max-w-[1240px] px-5 py-[clamp(80px,10vw,150px)]">
+      <div className="grid gap-16 lg:grid-cols-[.8fr_1.2fr] lg:gap-24">
+        <Reveal className="lg:sticky lg:top-32 lg:self-start">
+          <p className="mb-5 flex items-center gap-3 text-xs font-bold uppercase tracking-[.28em] text-lime">
+            <span className="h-px w-10 bg-lime" />
+            Método
+          </p>
+          <h2 className="mb-5 font-serif text-[clamp(32px,4.6vw,60px)] font-bold leading-[1.06] text-fg">
+            Bom treino não é{" "}
+            <span className="italic text-lime">igual para todo mundo.</span>
+          </h2>
+          <p className="max-w-[40ch] text-lg text-fg-muted">
+            Por isso o processo tem etapas claras — e todas passam por você.
+          </p>
+        </Reveal>
 
-        <ol className="grid grid-cols-[repeat(auto-fit,minmax(210px,1fr))] gap-5">
-          {etapas.map(({ numero, titulo, texto, opacidade }) => (
-            <li
-              key={numero}
-              className="rounded-b-2xl rounded-t border border-fg/[.08] border-t-2 border-t-lime bg-ink-card px-[22px] py-7"
-            >
-              <span className={`font-serif text-4xl font-bold leading-none text-lime ${opacidade}`}>
-                {numero}
-              </span>
-              <h3 className="mb-2 mt-3 text-lg font-bold text-fg">{titulo}</h3>
-              <p className="text-[15px] text-fg-subtle">{texto}</p>
-            </li>
-          ))}
-        </ol>
-      </section>
-    </Reveal>
+        <MetodoTimeline etapas={etapas} />
+      </div>
+    </section>
   );
 }

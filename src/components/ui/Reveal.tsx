@@ -1,47 +1,55 @@
 "use client";
 
-import { useEffect, useRef, type ReactNode } from "react";
+import { useEffect, useRef, type ElementType, type ReactNode } from "react";
+
+type Variant = "up" | "left" | "right" | "scale" | "fade";
 
 /**
- * Revelação suave ao entrar na viewport — só aplica a quem já
- * começa fora da tela, sem flash de conteúdo (mesmo comportamento
- * do runtime original). Respeita prefers-reduced-motion.
+ * Revela o conteúdo ao entrar na tela. Só atua em quem começa fora da
+ * viewport (sem flash) e respeita prefers-reduced-motion.
  */
-export function Reveal({ children, className }: { children: ReactNode; className?: string }) {
-  const ref = useRef<HTMLDivElement>(null);
+export function Reveal({
+  children,
+  className,
+  delay = 0,
+  variant = "up",
+  as = "div",
+}: {
+  children: ReactNode;
+  className?: string;
+  delay?: number;
+  variant?: Variant;
+  as?: ElementType;
+}) {
+  const ref = useRef<HTMLElement>(null);
+  const Tag = as;
 
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (!("IntersectionObserver" in window)) return;
+    if (el.getBoundingClientRect().top < window.innerHeight * 0.92) return;
 
-    const reduz = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduz || !("IntersectionObserver" in window)) return;
-    if (el.getBoundingClientRect().top <= window.innerHeight) return;
-
-    el.style.opacity = "0";
-    el.style.transform = "translateY(22px)";
-    el.style.transition = "opacity .55s ease, transform .55s ease";
+    el.classList.add("rv", variant === "fade" ? "rv-fade" : `rv-${variant}`);
+    if (delay) el.style.transitionDelay = `${delay}ms`;
 
     const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            el.style.opacity = "1";
-            el.style.transform = "none";
-            io.unobserve(el);
-          }
-        });
+      ([entry]) => {
+        if (entry?.isIntersecting) {
+          el.classList.add("rv-in");
+          io.disconnect();
+        }
       },
-      { rootMargin: "0px 0px -12% 0px" }
+      { rootMargin: "0px 0px -10% 0px", threshold: 0.05 }
     );
     io.observe(el);
-
     return () => io.disconnect();
-  }, []);
+  }, [variant, delay]);
 
   return (
-    <div ref={ref} className={className}>
+    <Tag ref={ref} className={className}>
       {children}
-    </div>
+    </Tag>
   );
 }
