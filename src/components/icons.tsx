@@ -89,3 +89,8 @@ export const IconPin = (p: IconProps) => (
     <circle cx="12" cy="10" r="2.3" />
   </svg>
 );
+export const IconChart = (p: IconProps) => (
+  <svg {...base} {...p}>
+    <path d="M4 20V10M10 20V4M16 20v-7M22 20H2" />
+  </svg>
+);
