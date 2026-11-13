@@ -50,7 +50,11 @@ export function Servicos() {
 
       <div className="grid gap-5 lg:grid-cols-[1.25fr_1fr]">
         {servicos.map(({ Icon, titulo, subtitulo, itens, cta, href, section, destaque }, i) => (
-          <Reveal key={titulo} delay={i * 120} className="h-full">
+          <Reveal
+            key={titulo}
+            delay={i * 120}
+            className={`h-full max-lg:sticky max-lg:top-24 ${i === 0 ? "max-lg:z-[1]" : "max-lg:z-[2]"}`}
+          >
             <Spot
               as="article"
               className={`group flex h-full flex-col rounded-3xl border p-6 transition-all duration-500 hover:-translate-y-1.5 sm:p-8 ${
