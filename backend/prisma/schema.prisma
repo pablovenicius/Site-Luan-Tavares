@@ -1,0 +1,89 @@
+// Banco SQLite.
+// Valores monetários são guardados em CENTAVOS (inteiros) para evitar erros de ponto flutuante.
+// SQLite não tem enums nativos no Prisma: campos de tipo/status são String,
+// e os valores aceitos são validados em src/schemas e src/types.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+/// Hóspede PF (CPF) ou empresa PJ (CNPJ).
+model Hospede {
+  id        Int      @id @default(autoincrement())
+  tipo      String   // "PF" | "PJ"
+  nome      String
+  documento String?  @unique // CPF ou CNPJ, somente dígitos; vazio só em pré-reserva
+  ie        String?  // inscrição estadual (PJ)
+  email     String?
+  telefone  String?
+  endereco  String?
+  cidade    String?
+  uf        String?
+  cep       String?
+  createdAt DateTime @default(now())
+
+  reservas Reserva[]
+  recibos  Recibo[]
+}
+
+/// Suíte da pousada (10 cadastradas pelo seed: 101-104 e 201-206).
+model Quarto {
+  id         Int    @id @default(autoincrement())
+  numero     String @unique // "101" … "104", "201" … "206"
+  nome       String // "Suíte 101"
+  capacidade Int    @default(2)
+
+  reservas Reserva[]
+  recibos  Recibo[]
+}
+
+/// Estadia. Nasce como PRE_RESERVA e pode virar CONFIRMADA ou CANCELADA.
+model Reserva {
+  id             Int      @id @default(autoincrement())
+  status         String   @default("PRE_RESERVA") // "PRE_RESERVA" | "CONFIRMADA" | "CANCELADA"
+  checkin        DateTime
+  checkout       DateTime
+  adultos        Int
+  criancas       Int      @default(0)
+  diariaCentavos Int
+  totalCentavos  Int
+  validadeAte    DateTime?
+  createdAt      DateTime @default(now())
+
+  hospedeId Int
+  hospede   Hospede @relation(fields: [hospedeId], references: [id])
+  quartoId  Int
+  quarto    Quarto  @relation(fields: [quartoId], references: [id])
+  recibos   Recibo[]
+
+  @@index([quartoId, checkin, checkout])
+}
+
+/// Documento emitido: recibo de pagamento ou pré-reserva.
+model Recibo {
+  id            Int       @id @default(autoincrement())
+  numero        Int       // sequência própria por tipo
+  tipo          String    // "RECIBO" | "PRE_RESERVA"
+  valorCentavos Int
+  pagamento     String?
+  dataPagamento DateTime?
+  referente     String
+  observacoes   String?
+  checkin       DateTime?
+  checkout      DateTime?
+  createdAt     DateTime  @default(now())
+
+  hospedeId Int
+  hospede   Hospede  @relation(fields: [hospedeId], references: [id])
+  quartoId  Int?
+  quarto    Quarto?  @relation(fields: [quartoId], references: [id])
+  reservaId Int?
+  reserva   Reserva? @relation(fields: [reservaId], references: [id])
+
+  @@unique([tipo, numero])
+}

@@ -1,41 +1,45 @@
-# Luan Tavares – Personal Trainer
+# Pousada Aruamar · Recibos e Pré-reservas
 
-Landing page em **Next.js 14 (App Router) + TypeScript + Tailwind CSS**.
-Foco comercial: **consultoria online**, com o atendimento presencial em Aracaju como opção.
+Monorepo com API (Node.js + Express + TypeScript + Prisma/SQLite + Puppeteer) e frontend (React + TypeScript + Tailwind).
+
+```
+aruamar-app/
+├── backend/   API REST, banco SQLite e geração de PDF
+└── frontend/  Formulário de recibo e pré-reserva (Vite + React)
+```
+
+## Como rodar
 
 ```bash
+# 1. API
+cd backend
+cp .env.example .env          # ajuste PIX_CHAVE, POUSADA_CNPJ etc.
+npm install                   # baixa também o Chromium do Puppeteer
+npx prisma migrate dev --name init
+npm run db:seed               # cadastra as 10 suítes
+npm run dev                   # http://localhost:3333
+
+# 2. Frontend (outro terminal)
+cd frontend
 npm install
-npm run dev      # http://localhost:3000
-npm run build
+npm run dev                   # http://localhost:5173 (proxy /api → 3333)
 ```
 
-## O que editar
+## Endpoints
 
-Tudo em **`src/config/site.ts`**: cidade, CREF, WhatsApp, Instagram, SEO e **fotos**.
+| Método | Rota                    | Descrição                                   |
+|--------|-------------------------|---------------------------------------------|
+| GET    | `/api/health`           | Status da API                               |
+| GET    | `/api/quartos`          | Lista das 10 suítes                         |
+| POST   | `/api/recibos`          | Cria um RECIBO ou uma PRE_RESERVA           |
+| GET    | `/api/recibos/:id/pdf`  | Gera o PDF do documento (Puppeteer)         |
 
-| Campo | O que é |
-| --- | --- |
-| `url` | Domínio final (ou defina `NEXT_PUBLIC_SITE_URL` na hospedagem) — usado em SEO/Open Graph |
-| `whatsapp` / `whatsappDisplay` | Número (55 + DDD + número) e como aparece escrito |
-| `photos.hero` / `photos.sobre` | Foto vertical 4:5. Vazio = painel com a marca |
-| `photos.galeria` | Lista `{ src, alt }`. A seção "Treino na prática" só aparece com fotos |
+## Regras de negócio implementadas
 
-Fotos: salve em `public/images/` e informe o caminho (ex.: `"/images/hero-luan.jpg"`).
-Toda foto ganha automaticamente revelação em cortina, parallax e zoom no hover.
-
-## Estrutura
-
-```
-src/app            layout (fontes, SEO, JSON-LD), page, globals.css
-src/config/site.ts dados do negócio e fotos
-src/lib            whatsapp (links/mensagens), analytics, structured-data (FAQ), cn
-src/components
-  layout/          Header, Footer, WhatsAppDock (botão flutuante + barra mobile)
-  sections/        Hero, Marquee, Sobre, Servicos, Metodo(+Timeline), Galeria, Faq, Contato
-  ui/              Photo, Reveal, Spot, ScrollProgress, WhatsAppButton
-public/images      logo-luan-tavares-hd.webp (4311×2187), og-image.jpg
-public/            icon.png, apple-icon.png
-```
-
-Animações respeitam `prefers-reduced-motion`. Analytics (GA4/Meta Pixel) dispara
-`whatsapp_click` se os scripts estiverem na página.
+- CPF e CNPJ validados por dígito verificador.
+- Pré-reserva bloqueia a suíte se já houver reserva não cancelada no mesmo período (409).
+- Sinal não pode ser maior que o total da estadia (422).
+- Validade da pré-reserva até o check-in; check-out depois do check-in.
+- Hóspede é identificado pelo documento (upsert).
+- Numeração independente para recibos e pré-reservas.
+- Valores são guardados em centavos (inteiros).

@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  font-size: 18px;
+  line-height: 1.55;
+  color: #1c1917;
+  background: #fcf8f1;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Feedback de clique em todos os botões: afundam ao apertar e escurecem levemente. */
+button {
+  min-height: 2.75rem;
+  cursor: pointer;
+  transition: transform 0.08s ease, filter 0.15s ease, background-color 0.15s ease;
+}
+button:not(:disabled):active {
+  transform: scale(0.95);
+  filter: brightness(0.9);
+}
+button:disabled {
+  cursor: not-allowed;
+}
+button:focus-visible {
+  outline: 2px solid #0a7aa8;
+  outline-offset: 2px;
+}
+
+/* Campos de preenchimento grandes e legíveis. */
+input:not([type='checkbox']):not([type='radio']),
+select,
+textarea {
+  min-height: 2.75rem;
+  font-size: 1rem;
+}
