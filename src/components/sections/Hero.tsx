@@ -2,10 +2,7 @@ import { siteConfig } from "@/config/site";
 import { whatsappLinks } from "@/lib/whatsapp";
 import { IconCheck, IconInstagram } from "@/components/icons";
 import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
-import { AppMockup } from "@/components/ui/AppMockup";
-import { Photo } from "@/components/ui/Photo";
 import { Spot } from "@/components/ui/Spot";
-import { Tilt } from "@/components/ui/Tilt";
 
 const beneficios = ["Aplicativo personalizado", "Acompanhamento próximo", "Também presencial em Aracaju"];
 
@@ -25,8 +22,6 @@ function Words({ text, start = 0, className }: { text: string; start?: number; c
 }
 
 export function Hero() {
-  const temFoto = Boolean(siteConfig.photos.hero);
-
   return (
     <Spot
       as="section"
@@ -38,8 +33,8 @@ export function Hero() {
         className="bg-grid pointer-events-none absolute inset-0 -z-10 opacity-70 [mask-image:radial-gradient(ellipse_at_70%_30%,#000,transparent_72%)]"
       />
 
-      <div className="mx-auto grid lg:min-h-[92svh] max-w-[1240px] items-center gap-8 px-5 pb-12 pt-[92px] sm:gap-12 sm:pt-[104px] lg:grid-cols-[1.1fr_.9fr] lg:gap-10 lg:pt-24">
-        <div>
+      <div className="mx-auto grid lg:min-h-[88svh] max-w-[1240px] items-center gap-8 px-5 pb-12 pt-[92px] sm:gap-12 sm:pt-[104px] lg:gap-10 lg:pt-24">
+        <div className="max-w-[860px]">
           <p
             className="mb-6 inline-flex animate-fade-up items-center gap-3 rounded-full border border-lime/25 bg-lime/[.07] px-4 py-2 font-mono text-[11px] font-medium uppercase tracking-[.22em] text-lime"
             style={{ animationDelay: "100ms" }}
@@ -51,7 +46,7 @@ export function Hero() {
             Consultoria online · Todo o Brasil
           </p>
 
-          <h1 className="mb-6 font-serif text-[clamp(40px,5.8vw,78px)] font-bold leading-[1.02] tracking-[-.01em] text-fg">
+          <h1 className="mb-6 font-serif text-[clamp(42px,7vw,96px)] font-bold leading-[1.02] tracking-[-.01em] text-fg">
             <Words text="Seu treino online," start={200} />
             <br />
             <Words text="feito para você." start={560} className="text-shine italic" />
@@ -105,32 +100,6 @@ export function Hero() {
               </span>
               @{siteConfig.instagram}
             </a>
-          </div>
-        </div>
-
-        <div
-          className="relative mx-auto w-full max-w-[460px] animate-fade-up pb-2 lg:max-w-none"
-          style={{ animationDelay: "500ms" }}
-        >
-          {temFoto && (
-            <div className="absolute left-0 top-6 hidden w-[56%] sm:block lg:left-[-4%]">
-              <div
-                aria-hidden="true"
-                className="absolute -inset-4 -z-10 -rotate-3 rounded-[28px] border border-lime/20"
-              />
-              <Photo
-                src={siteConfig.photos.hero}
-                alt="Luan Tavares, personal trainer"
-                ratio="4/5"
-                priority
-                speed={0.1}
-              />
-            </div>
-          )}
-          <div className={temFoto ? "sm:ml-auto sm:w-[62%] lg:w-[58%]" : ""}>
-            <Tilt>
-              <AppMockup />
-            </Tilt>
           </div>
         </div>
       </div>
