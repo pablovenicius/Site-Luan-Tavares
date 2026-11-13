@@ -31,7 +31,7 @@ const abas: { id: Tab; rotulo: string; Icon: typeof IconDumbbell }[] = [
 
 /** Aplicativo de treino ilustrado em uma moldura de celular. É interativo: toque nas funções. */
 export function AppMockup({ className = "" }: { className?: string }) {
-  const [tab, setTab] = useState<Tab>("treino");
+  const [tab, setTab] = useState<Tab>("video");
   const [feitos, setFeitos] = useState<boolean[]>([true, true, false, false]);
   const [sel, setSel] = useState(2);
   const [tocando, setTocando] = useState(false);
