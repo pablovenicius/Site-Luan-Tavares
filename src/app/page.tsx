@@ -19,7 +19,10 @@ export default function HomePage() {
       <Header />
 
       <main id="conteudo">
-        <Hero />
+        <div className="sticky top-0 md:static">
+          <Hero />
+        </div>
+        <div className="relative z-10 bg-ink">
         <Marquee />
         <Sobre />
         <Aplicativo />
@@ -28,6 +31,7 @@ export default function HomePage() {
         <Galeria />
         <Faq />
         <Contato />
+        </div>
       </main>
 
       <Footer />
