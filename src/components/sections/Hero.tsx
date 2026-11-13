@@ -54,10 +54,10 @@ export function Hero() {
             Consultoria online · Todo o Brasil
           </p>
 
-          <h1 className="mb-4 font-serif text-[clamp(34px,7vw,96px)] sm:mb-6 font-bold leading-[1.02] tracking-[-.01em] text-fg">
-            <Words text="Seu treino online," start={200} />
+          <h1 className="mb-4 font-serif text-[clamp(32px,6.2vw,88px)] sm:mb-6 font-bold leading-[1.02] tracking-[-.01em] text-fg">
+            <Words text="Seu treino online ou presencial," start={200} />
             <br />
-            <Words text="feito para você." start={560} className="text-shine italic" />
+            <Words text="feito para você." start={700} className="text-shine italic" />
           </h1>
 
           <p
