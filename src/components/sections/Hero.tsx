@@ -3,6 +3,7 @@ import { whatsappLinks } from "@/lib/whatsapp";
 import { IconCheck, IconInstagram } from "@/components/icons";
 import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
 import { Spot } from "@/components/ui/Spot";
+import { HeroVideo } from "@/components/ui/HeroVideo";
 
 const beneficios = ["Aplicativo personalizado", "Acompanhamento próximo", "Também presencial em Aracaju"];
 
@@ -28,6 +29,16 @@ export function Hero() {
       className="grain relative isolate overflow-hidden bg-[radial-gradient(900px_560px_at_85%_10%,rgba(168,255,31,.12),transparent_60%),radial-gradient(700px_500px_at_0%_100%,rgba(95,227,27,.07),transparent_60%)]"
     >
       <div id="topo" className="absolute top-0" />
+      {/* Fundo em vídeo + camadas escuras para o texto continuar legível */}
+      <HeroVideo />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 -z-20 bg-[linear-gradient(90deg,rgba(14,16,19,.92),rgba(14,16,19,.62)_60%,rgba(14,16,19,.42))]"
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 bottom-0 -z-20 h-40 bg-gradient-to-t from-ink to-transparent"
+      />
       <div
         aria-hidden="true"
         className="bg-grid pointer-events-none absolute inset-0 -z-10 opacity-70 [mask-image:radial-gradient(ellipse_at_70%_30%,#000,transparent_72%)]"
