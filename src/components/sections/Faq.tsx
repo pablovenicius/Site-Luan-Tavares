@@ -42,11 +42,22 @@ export function Faq() {
                       <span
                         aria-hidden="true"
                         className={cn(
-                          "grid h-8 w-8 flex-none place-items-center rounded-full border text-lg leading-none transition-all duration-500",
-                          on ? "rotate-45 border-lime bg-lime text-onlime" : "border-white/20 text-lime"
+                          "flex flex-none items-center gap-1.5 rounded-full border px-3.5 py-2 text-[12px] font-semibold leading-none transition-all duration-500",
+                          on ? "border-lime bg-lime text-onlime" : "border-white/20 text-lime"
                         )}
                       >
-                        +
+                        Saiba mais
+                        <svg
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2.4"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          className={cn("h-3 w-3 transition-transform duration-500", on && "rotate-180")}
+                        >
+                          <path d="M6 9l6 6 6-6" />
+                        </svg>
                       </span>
                     </button>
                   </h3>
