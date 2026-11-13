@@ -30,7 +30,7 @@ export function Hero() {
       <HeroVideo />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 -z-20 bg-[linear-gradient(90deg,rgba(14,16,19,.82),rgba(14,16,19,.46)_45%,rgba(14,16,19,.06)_85%)]"
+        className="pointer-events-none absolute inset-0 -z-20 bg-[linear-gradient(0deg,rgba(14,16,19,.94),rgba(14,16,19,.6)_30%,rgba(14,16,19,0)_55%)] md:bg-[linear-gradient(90deg,rgba(14,16,19,.82),rgba(14,16,19,.46)_45%,rgba(14,16,19,.06)_85%)]"
       />
       <div
         aria-hidden="true"
@@ -41,10 +41,10 @@ export function Hero() {
         className="bg-grid pointer-events-none absolute inset-0 -z-10 opacity-40 [mask-image:radial-gradient(ellipse_at_70%_30%,#000,transparent_72%)]"
       />
 
-      <div className="mx-auto grid lg:min-h-[88svh] max-w-[1240px] items-center gap-8 px-5 pb-14 pt-[92px] sm:gap-12 sm:pt-[104px] lg:gap-10 lg:pt-24">
+      <div className="mx-auto grid min-h-[88svh] max-w-[1240px] items-end gap-8 px-5 pb-10 pt-[92px] lg:items-center lg:pb-14 sm:gap-12 sm:pt-[104px] lg:gap-10 lg:pt-24">
         <div className="max-w-[860px]">
           <p
-            className="mb-6 inline-flex animate-fade-up items-center gap-3 rounded-full border border-lime/25 bg-lime/[.07] px-4 py-2 font-mono text-[11px] font-medium uppercase tracking-[.22em] text-lime"
+            className="mb-6 hidden animate-fade-up items-center gap-3 rounded-full sm:inline-flex border border-lime/25 bg-lime/[.07] px-4 py-2 font-mono text-[11px] font-medium uppercase tracking-[.22em] text-lime"
             style={{ animationDelay: "100ms" }}
           >
             <span className="relative flex h-2 w-2">
@@ -54,14 +54,14 @@ export function Hero() {
             Consultoria online · Todo o Brasil
           </p>
 
-          <h1 className="mb-6 font-serif text-[clamp(42px,7vw,96px)] font-bold leading-[1.02] tracking-[-.01em] text-fg">
+          <h1 className="mb-4 font-serif text-[clamp(34px,7vw,96px)] sm:mb-6 font-bold leading-[1.02] tracking-[-.01em] text-fg">
             <Words text="Seu treino online," start={200} />
             <br />
             <Words text="feito para você." start={560} className="text-shine italic" />
           </h1>
 
           <p
-            className="mb-8 max-w-[42ch] animate-fade-up text-[clamp(17px,1.5vw,19px)] leading-relaxed text-fg-muted"
+            className="mb-8 hidden max-w-[42ch] animate-fade-up sm:block text-[clamp(17px,1.5vw,19px)] leading-relaxed text-fg-muted"
             style={{ animationDelay: "900ms" }}
           >
             Aplicativo personalizado e acompanhamento de perto. Também presencial em {siteConfig.city}.
@@ -71,16 +71,18 @@ export function Hero() {
             <WhatsAppButton href={whatsappLinks.online} section="hero" size="lg" arrow className="w-full sm:w-auto">
               Quero a consultoria online
             </WhatsAppButton>
-            <WhatsAppButton
-              href={whatsappLinks.presencial}
-              section="hero-presencial"
-              variant="outline"
-              size="lg"
-              icon={false}
-              className="w-full sm:w-auto"
-            >
-              Treino presencial
-            </WhatsAppButton>
+            <div className="hidden sm:block">
+              <WhatsAppButton
+                href={whatsappLinks.presencial}
+                section="hero-presencial"
+                variant="outline"
+                size="lg"
+                icon={false}
+                className="w-full sm:w-auto"
+              >
+                Treino presencial
+              </WhatsAppButton>
+            </div>
           </div>
         </div>
       </div>
