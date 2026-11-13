@@ -6,10 +6,10 @@ import { IconChart, IconChat, IconCheck, IconDumbbell, IconPlay } from "@/compon
 type Tab = "treino" | "video" | "evolucao" | "chat";
 
 const exercicios = [
-  { nome: "Supino reto", series: "4 × 10", dicas: ["Escápulas firmes no banco", "Cotovelos a 45° do tronco", "Desça controlando, 2 segundos"] },
-  { nome: "Crucifixo inclinado", series: "3 × 12", dicas: ["Cotovelos levemente flexionados", "Abra até sentir o peitoral alongar", "Suba sem bater as mãos"] },
-  { nome: "Tríceps na polia", series: "3 × 12", dicas: ["Cotovelos colados ao corpo", "Estenda por completo", "Volte devagar"] },
-  { nome: "Flexão de braço", series: "3 × 15", dicas: ["Corpo alinhado da cabeça aos pés", "Abdômen firme", "Peito perto do chão"] },
+  { nome: "Afundo com kettlebell", series: "3 × 12", video: "/videos/app-videos/app-1.mp4", poster: "/videos/app-videos/app-1.jpg", dicas: ["Tronco firme e ereto", "Joelho da frente alinhado ao pé", "Desça controlando, sem pressa"] },
+  { nome: "Treino funcional", series: "4 × 40s", video: "/videos/app-videos/app-2.mp4", poster: "/videos/app-videos/app-2.jpg", dicas: ["Respiração constante", "Postura firme em cada movimento", "Mantenha o ritmo da série"] },
+  { nome: "Cadeira abdutora", series: "3 × 15", video: "/videos/app-videos/app-3.mp4", poster: "/videos/app-videos/app-3.jpg", dicas: ["Costas apoiadas no encosto", "Abra sem tirar o quadril do banco", "Volte devagar"] },
+  { nome: "Circuito de agilidade", series: "4 × 30s", video: "/videos/app-videos/app-4.mp4", poster: "/videos/app-videos/app-4.jpg", dicas: ["Passos curtos e rápidos", "Olhar à frente, não nos pés", "Core firme durante todo o circuito"] },
 ];
 
 const semanas = [38, 46, 52, 61, 70, 82];
@@ -36,6 +36,7 @@ export function AppMockup({ className = "" }: { className?: string }) {
   const [sel, setSel] = useState(2);
   const [tocando, setTocando] = useState(false);
   const [prog, setProg] = useState(0);
+  const vid = useRef<HTMLVideoElement>(null);
   const [semana, setSemana] = useState(5);
   const [msgs, setMsgs] = useState<Msg[]>([{ de: "luan", texto: "Oi! Como foi o treino de ontem?" }]);
   const [usadas, setUsadas] = useState<string[]>([]);
@@ -45,12 +46,6 @@ export function AppMockup({ className = "" }: { className?: string }) {
   const concluidos = feitos.filter(Boolean).length;
   const pct = Math.round((concluidos / total) * 100);
   const ex = exercicios[sel] ?? exercicios[0]!;
-
-  useEffect(() => {
-    if (!tocando) return;
-    const id = setInterval(() => setProg((p) => (p >= 100 ? 0 : p + 2)), 100);
-    return () => clearInterval(id);
-  }, [tocando]);
 
   useEffect(() => {
     fim.current?.scrollIntoView({ block: "nearest" });
@@ -160,26 +155,46 @@ export function AppMockup({ className = "" }: { className?: string }) {
                 <p className="font-mono text-[9px] uppercase tracking-[.24em] text-lime">Execução</p>
                 <p className="mt-1 font-serif text-[20px] font-bold leading-tight text-fg">{ex.nome}</p>
 
-                <button
-                  type="button"
-                  onClick={() => setTocando((v) => !v)}
-                  aria-label={tocando ? "Pausar vídeo" : "Reproduzir vídeo"}
-                  className="relative mt-3 grid aspect-video w-full place-items-center overflow-hidden rounded-2xl border border-white/10 bg-[radial-gradient(circle_at_50%_40%,#232a22,#0e1013)]"
-                >
-                  <span className={`grid h-12 w-12 place-items-center rounded-full bg-lime text-onlime shadow-[0_0_30px_rgba(168,255,31,.5)] ${tocando ? "" : "animate-pulse"}`}>
-                    {tocando ? (
-                      <span className="flex gap-1">
-                        <span className="h-4 w-1.5 rounded-sm bg-onlime" />
-                        <span className="h-4 w-1.5 rounded-sm bg-onlime" />
+                <div className="relative mt-3 aspect-square w-full overflow-hidden rounded-2xl border border-white/10 bg-ink">
+                  <video
+                    key={ex.video}
+                    ref={vid}
+                    src={ex.video}
+                    poster={ex.poster}
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    preload="metadata"
+                    onPlay={() => setTocando(true)}
+                    onPause={() => setTocando(false)}
+                    onTimeUpdate={(e) => {
+                      const v = e.currentTarget;
+                      if (v.duration) setProg((v.currentTime / v.duration) * 100);
+                    }}
+                    className="absolute inset-0 h-full w-full object-cover"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => {
+                      const v = vid.current;
+                      if (!v) return;
+                      if (v.paused) void v.play();
+                      else v.pause();
+                    }}
+                    aria-label={tocando ? "Pausar vídeo" : "Reproduzir vídeo"}
+                    className="absolute inset-0 grid place-items-center"
+                  >
+                    {!tocando && (
+                      <span className="grid h-12 w-12 place-items-center rounded-full bg-lime text-onlime shadow-[0_0_30px_rgba(168,255,31,.5)]">
+                        <IconPlay className="h-6 w-6" />
                       </span>
-                    ) : (
-                      <IconPlay className="h-6 w-6" />
                     )}
+                  </button>
+                  <span className="pointer-events-none absolute inset-x-3 bottom-2 h-1 overflow-hidden rounded-full bg-white/15">
+                    <span className="block h-full rounded-full bg-lime" style={{ width: prog + "%" }} />
                   </span>
-                  <span className="absolute inset-x-3 bottom-2 h-1 overflow-hidden rounded-full bg-white/15">
-                    <span className="block h-full rounded-full bg-lime" style={{ width: `${prog}%` }} />
-                  </span>
-                </button>
+                </div>
 
                 <ul className="mt-3 grid gap-1.5">
                   {ex.dicas.map((d) => (
