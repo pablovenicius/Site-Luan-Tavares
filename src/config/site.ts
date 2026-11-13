@@ -33,8 +33,8 @@ export const siteConfig = {
    * A seção de fotos tem 6 vagas (Luan e alunos); vaga sem foto mostra a marca.
    */
   photos: {
-    hero: null as string | null, // ex.: "/images/hero-luan.jpg"  (vertical 4:5)
-    sobre: null as string | null, // ex.: "/images/sobre-luan.jpg" (vertical 4:5)
+    // Foto de destaque do Luan (seção logo após a primeira tela). Vertical 4:5.
+    sobre: null as string | null, // ex.: "/images/sobre-luan.jpg"
     // Fotos do Luan e dos alunos. Enquanto estiver vazio, aparecem 3 espaços reservados.
     // ex.: [{ src: "/images/treino-1.jpg", alt: "Luan orientando um aluno" }]
     // ex.: [{ src: "/images/luan-1.jpg", alt: "Luan Tavares", legenda: "Luan" }, { src: "/images/aluno-1.jpg", alt: "Treino com aluno", legenda: "Com aluno" }]
@@ -44,7 +44,6 @@ export const siteConfig = {
 
 export const navLinks = [
   { href: "#sobre", label: "Sobre" },
-  { href: "#app", label: "Aplicativo" },
   { href: "#servicos", label: "Serviços" },
   { href: "#metodo", label: "Método" },
   { href: "#fotos", label: "Fotos" },
