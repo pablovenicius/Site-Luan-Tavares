@@ -313,12 +313,12 @@ export function AppMockup({ className = "" }: { className?: string }) {
         Toque e experimente
       </p>
 
-      <div className="absolute bottom-12 -left-8 hidden animate-floaty rounded-2xl border border-white/10 bg-ink/85 px-3.5 py-2.5 shadow-2xl backdrop-blur-xl sm:block">
+      <div className="absolute -left-36 top-[48%] hidden animate-floaty rounded-2xl border border-white/10 bg-ink/85 px-3.5 py-2.5 shadow-2xl backdrop-blur-xl xl:block">
         <p className="font-mono text-[9px] uppercase tracking-[.2em] text-lime">App personalizado</p>
         <p className="text-[13px] font-semibold text-fg">Feito para o seu treino</p>
       </div>
       <div
-        className="absolute -right-8 top-[9%] hidden animate-floaty rounded-2xl border border-white/10 bg-ink/85 px-3.5 py-2.5 shadow-2xl backdrop-blur-xl sm:block"
+        className="absolute -right-36 top-[14%] hidden animate-floaty rounded-2xl border border-white/10 bg-ink/85 px-3.5 py-2.5 shadow-2xl backdrop-blur-xl xl:block"
         style={{ animationDelay: "-3.2s" }}
       >
         <p className="font-mono text-[9px] uppercase tracking-[.2em] text-lime">Online</p>
