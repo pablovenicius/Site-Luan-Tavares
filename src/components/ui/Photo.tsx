@@ -19,6 +19,7 @@ export function Photo({
   speed = 0.12,
   priority = false,
   className,
+  label,
   children,
 }: {
   src?: string | null;
@@ -27,6 +28,8 @@ export function Photo({
   speed?: number;
   priority?: boolean;
   className?: string;
+  /** Legenda exibida só quando não há foto (indica o que entra no espaço). */
+  label?: string;
   children?: React.ReactNode;
 }) {
   const outer = useRef<HTMLDivElement>(null);
@@ -124,6 +127,13 @@ export function Photo({
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 rounded-[20px] ring-1 ring-inset ring-lime/0 transition-all duration-500 group-hover:ring-lime/40"
       />
+      {!src && label && (
+        <div className="absolute inset-x-0 bottom-0 p-4 text-center">
+          <span className="inline-block rounded-full border border-lime/25 bg-ink/80 px-3.5 py-1.5 font-mono text-[10px] uppercase tracking-[.18em] text-lime backdrop-blur">
+            {label}
+          </span>
+        </div>
+      )}
       {children}
     </div>
     </div>

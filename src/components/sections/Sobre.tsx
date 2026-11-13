@@ -18,13 +18,14 @@ export function Sobre() {
       <div className="grid items-center gap-12 lg:grid-cols-[.9fr_1.1fr] lg:gap-24">
         <Reveal
           variant="left"
-          className={`relative mx-auto w-full max-w-[480px] lg:max-w-none ${siteConfig.photos.sobre ? "" : "hidden lg:block"}`}
+          className="relative mx-auto w-full max-w-[420px] lg:max-w-none"
         >
           <Photo
             src={siteConfig.photos.sobre}
             alt="Luan Tavares orientando um aluno"
             ratio="4/5"
             speed={0.14}
+            label="Foto do Luan"
           >
             <div className="absolute bottom-5 left-5 rounded-xl border border-white/10 bg-ink/80 px-4 py-2.5 backdrop-blur-xl">
               <p className="text-[10px] font-bold uppercase tracking-[.22em] text-lime">CREF</p>

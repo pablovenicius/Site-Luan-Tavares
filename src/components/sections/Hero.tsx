@@ -38,7 +38,7 @@ export function Hero() {
         className="bg-grid pointer-events-none absolute inset-0 -z-10 opacity-70 [mask-image:radial-gradient(ellipse_at_70%_30%,#000,transparent_72%)]"
       />
 
-      <div className="mx-auto grid min-h-[92svh] max-w-[1240px] items-center gap-12 px-5 pb-12 pt-[108px] lg:grid-cols-[1.2fr_.8fr] lg:gap-10 lg:pt-24">
+      <div className="mx-auto grid lg:min-h-[92svh] max-w-[1240px] items-center gap-8 px-5 pb-12 pt-[92px] sm:gap-12 sm:pt-[104px] lg:grid-cols-[1.1fr_.9fr] lg:gap-10 lg:pt-24">
         <div>
           <p
             className="mb-6 inline-flex animate-fade-up items-center gap-3 rounded-full border border-lime/25 bg-lime/[.07] px-4 py-2 font-mono text-[11px] font-medium uppercase tracking-[.22em] text-lime"
@@ -86,7 +86,7 @@ export function Hero() {
             className="flex animate-fade-up flex-wrap items-center gap-x-7 gap-y-4"
             style={{ animationDelay: "1200ms" }}
           >
-            <ul className="flex flex-wrap gap-x-6 gap-y-2.5">
+            <ul className="hidden flex-wrap gap-x-6 gap-y-2.5 sm:flex">
               {beneficios.map((b) => (
                 <li key={b} className="flex items-center gap-2 text-sm font-semibold text-fg-muted">
                   <IconCheck className="h-4 w-4 text-lime" />
@@ -109,14 +109,14 @@ export function Hero() {
         </div>
 
         <div
-          className={`relative mx-auto w-full max-w-[460px] animate-fade-up lg:max-w-none ${temFoto ? "" : "hidden lg:block"}`}
+          className="relative mx-auto w-full max-w-[460px] animate-fade-up pb-2 lg:max-w-none"
           style={{ animationDelay: "500ms" }}
         >
-          {temFoto ? (
-            <>
+          {temFoto && (
+            <div className="absolute left-0 top-6 hidden w-[56%] sm:block lg:left-[-4%]">
               <div
                 aria-hidden="true"
-                className="absolute -inset-5 -z-10 rotate-3 rounded-[28px] border border-lime/20"
+                className="absolute -inset-4 -z-10 -rotate-3 rounded-[28px] border border-lime/20"
               />
               <Photo
                 src={siteConfig.photos.hero}
@@ -125,23 +125,13 @@ export function Hero() {
                 priority
                 speed={0.1}
               />
-              <div className="absolute -left-4 top-[14%] hidden animate-floaty rounded-2xl border border-white/10 bg-ink/80 px-4 py-3 shadow-2xl backdrop-blur-xl sm:block">
-                <p className="font-mono text-[10px] uppercase tracking-[.2em] text-lime">Consultoria online</p>
-                <p className="text-sm font-semibold text-fg">Todo o Brasil</p>
-              </div>
-              <div
-                className="absolute -right-3 bottom-[12%] hidden animate-floaty rounded-2xl border border-white/10 bg-ink/80 px-4 py-3 shadow-2xl backdrop-blur-xl sm:block"
-                style={{ animationDelay: "-3s" }}
-              >
-                <p className="font-mono text-[10px] uppercase tracking-[.2em] text-lime">Presencial</p>
-                <p className="text-sm font-semibold text-fg">{siteConfig.city} e região</p>
-              </div>
-            </>
-          ) : (
-            <Tilt className="hidden lg:block">
+            </div>
+          )}
+          <div className={temFoto ? "sm:ml-auto sm:w-[62%] lg:w-[58%]" : ""}>
+            <Tilt>
               <AppMockup />
             </Tilt>
-          )}
+          </div>
         </div>
       </div>
     </Spot>
