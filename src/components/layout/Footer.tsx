@@ -45,8 +45,13 @@ export function Footer() {
           >
             <IconInstagram className="h-5 w-5 text-lime transition-transform duration-300 group-hover:scale-110" />
           </a>
-          <WhatsAppButton href={whatsappLinks.geral} section="rodape" size="md">
-            WhatsApp
+          <WhatsAppButton
+            href={whatsappLinks.geral}
+            section="rodape"
+            size="md"
+            className="w-12 gap-0 !px-0"
+          >
+            <span className="sr-only">WhatsApp</span>
           </WhatsAppButton>
         </div>
       </div>
