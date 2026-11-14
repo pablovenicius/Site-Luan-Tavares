@@ -77,9 +77,10 @@ export function Contato() {
                 href={siteConfig.instagramUrl}
                 target="_blank"
                 rel="noopener"
+                aria-label={`Instagram @${siteConfig.instagram}`}
                 className="flex items-center gap-3 text-fg-muted transition-colors hover:text-lime"
               >
-                <IconInstagram className="h-5 w-5 text-lime" />@{siteConfig.instagram}
+                <IconInstagram className="h-5 w-5 text-lime" />
               </a>
             </li>
           </ul>
