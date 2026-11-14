@@ -8,7 +8,7 @@ type Tab = "treino" | "video" | "evolucao" | "chat";
 const exercicios = [
   { nome: "Afundo com kettlebell", series: "3 × 12", video: "/videos/app-videos/app-1.mp4", poster: "/videos/app-videos/app-1.jpg", dicas: ["Tronco firme e ereto", "Joelho da frente alinhado ao pé", "Desça controlando, sem pressa"] },
   { nome: "Treino funcional", series: "4 × 40s", video: "/videos/app-videos/app-2.mp4", poster: "/videos/app-videos/app-2.jpg", dicas: ["Respiração constante", "Postura firme em cada movimento", "Mantenha o ritmo da série"] },
-  { nome: "Cadeira abdutora", series: "3 × 15", video: "/videos/app-videos/app-3.mp4", poster: "/videos/app-videos/app-3.jpg", dicas: ["Costas apoiadas no encosto", "Abra sem tirar o quadril do banco", "Volte devagar"] },
+  { nome: "Cadeira extensora", series: "3 × 15", video: "/videos/app-videos/app-3.mp4", poster: "/videos/app-videos/app-3.jpg", dicas: ["Costas apoiadas no encosto", "Estenda os joelhos sem tirar o quadril do banco", "Volte devagar"] },
   { nome: "Circuito de agilidade", series: "4 × 30s", video: "/videos/app-videos/app-4.mp4", poster: "/videos/app-videos/app-4.jpg", dicas: ["Passos curtos e rápidos", "Olhar à frente, não nos pés", "Core firme durante todo o circuito"] },
 ];
 
