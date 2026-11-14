@@ -41,10 +41,9 @@ export function Footer() {
             target="_blank"
             rel="noopener"
             aria-label={`Instagram @${siteConfig.instagram}`}
-            className="group inline-flex min-h-[48px] items-center justify-center gap-2.5 rounded-full border border-white/15 px-5 text-sm font-semibold text-fg-muted transition-colors hover:border-lime/50 hover:text-lime"
+            className="group inline-flex min-h-[48px] items-center justify-center gap-2.5 rounded-full border border-white/15 w-12 text-sm font-semibold text-fg-muted transition-colors hover:border-lime/50 hover:text-lime"
           >
-            <IconInstagram className="h-5 w-5 text-lime transition-transform duration-300 group-hover:scale-110" />@
-            {siteConfig.instagram}
+            <IconInstagram className="h-5 w-5 text-lime transition-transform duration-300 group-hover:scale-110" />
           </a>
           <WhatsAppButton href={whatsappLinks.geral} section="rodape" size="md">
             WhatsApp
