@@ -138,9 +138,10 @@ export function Header() {
             href={siteConfig.instagramUrl}
             target="_blank"
             rel="noopener"
+            aria-label={`Instagram @${siteConfig.instagram}`}
             className="flex items-center justify-center gap-2.5 rounded-full border border-white/15 py-3.5 text-sm font-semibold text-fg-muted"
           >
-            <IconInstagram className="h-5 w-5 text-lime" />@{siteConfig.instagram}
+            <IconInstagram className="h-5 w-5 text-lime" />
           </a>
         </div>
       </div>
