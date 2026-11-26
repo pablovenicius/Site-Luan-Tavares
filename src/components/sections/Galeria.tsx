@@ -3,7 +3,7 @@ import { Photo } from "@/components/ui/Photo";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 
-const ratios = ["4/5", "3/4", "3/4", "4/5", "4/5", "3/4"];
+const ratios = ["4/5", "3/4", "3/4", "3/4", "3/4", "3/4"];
 const speeds = [0.08, 0.16, 0.1, 0.14, 0.08, 0.16];
 const legendasPadrao = ["Luan", "Luan treinando", "Com aluno", "Com aluna", "Treino na prática", "Resultado"];
 const VAGAS = 6;

@@ -33,12 +33,15 @@ export const siteConfig = {
    * A seção de fotos tem 6 vagas (Luan e alunos); vaga sem foto mostra a marca.
    */
   photos: {
-    // Foto de destaque do Luan (seção logo após a primeira tela). Vertical 4:5.
-    sobre: null as string | null, // ex.: "/images/sobre-luan.jpg"
-    // Fotos do Luan e dos alunos. Enquanto estiver vazio, aparecem 3 espaços reservados.
-    // ex.: [{ src: "/images/treino-1.jpg", alt: "Luan orientando um aluno" }]
-    // ex.: [{ src: "/images/luan-1.jpg", alt: "Luan Tavares", legenda: "Luan" }, { src: "/images/aluno-1.jpg", alt: "Treino com aluno", legenda: "Com aluno" }]
-    galeria: [] as { src: string; alt: string; legenda?: string }[],
+    // Fotos do Luan e dos alunos (6 vagas). Arquivos em public/images/galeria/.
+    galeria: [
+      { src: "/images/galeria/time-alunos.jpg", alt: "Luan Tavares com um grupo de alunas e alunos após o treino", legenda: "Time Luan Tavares" },
+      { src: "/images/galeria/alunos-academia.jpg", alt: "Luan com alunos na academia, todos com a camiseta Luan Tavares", legenda: "Com os alunos" },
+      { src: "/images/galeria/alunas-selfie.jpg", alt: "Luan e duas alunas sorrindo após o treino", legenda: "Com as alunas" },
+      { src: "/images/galeria/luan-aluna-cadeira.jpg", alt: "Luan orientando uma aluna na cadeira flexora", legenda: "Com aluna" },
+      { src: "/images/galeria/luan-supino-inclinado.jpg", alt: "Luan acompanhando um aluno no supino inclinado com halteres", legenda: "Treino na prática" },
+      { src: "/images/galeria/luan-triceps-polia.jpg", alt: "Luan acompanhando um aluno no tríceps na polia", legenda: "Acompanhamento de perto" },
+    ] as { src: string; alt: string; legenda?: string }[],
   },
 };
 

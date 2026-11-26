@@ -32,6 +32,7 @@ const abas: { id: Tab; rotulo: string; Icon: typeof IconDumbbell }[] = [
 /** Aplicativo de treino ilustrado em uma moldura de celular. É interativo: toque nas funções. */
 export function AppMockup({ className = "" }: { className?: string }) {
   const [tab, setTab] = useState<Tab>("video");
+  const [tocou, setTocou] = useState(false);
   const [feitos, setFeitos] = useState<boolean[]>([true, true, false, false]);
   const [sel, setSel] = useState(2);
   const [tocando, setTocando] = useState(false);
@@ -65,13 +66,21 @@ export function AppMockup({ className = "" }: { className?: string }) {
   const chips = Object.keys(respostas).filter((q) => !usadas.includes(q));
 
   return (
-    <div className={`relative mx-auto w-[min(100%,290px)] ${className}`}>
+    <div className={`relative mx-auto w-[min(100%,290px)] ${className}`} onPointerDownCapture={() => setTocou(true)}>
       <div aria-hidden="true" className="absolute -inset-10 -z-10 rounded-full bg-lime/[.16] blur-3xl" />
 
       <div className="relative aspect-[9/17] overflow-hidden rounded-[44px] border border-white/15 bg-ink-deep p-2.5 shadow-[0_40px_90px_-30px_rgba(0,0,0,.9),0_0_0_1px_rgba(168,255,31,.12)]">
         <div className="relative flex h-full flex-col overflow-hidden rounded-[34px] bg-[linear-gradient(180deg,#14181c_0%,#0c0e11_100%)]">
           <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 z-10 h-16 animate-scan bg-gradient-to-b from-transparent via-lime/[.10] to-transparent" />
           <div className="mx-auto mt-2.5 h-5 w-24 flex-none rounded-full bg-black" />
+          {!tocou && (
+            <span aria-hidden="true" className="pointer-events-none absolute bottom-[72px] right-6 z-20 motion-safe:animate-bounce">
+              <span className="absolute -inset-3 rounded-full bg-lime/40 motion-safe:animate-ping" />
+              <svg viewBox="0 0 24 24" className="relative h-9 w-9 drop-shadow-[0_4px_10px_rgba(0,0,0,.6)]" fill="#F4F6F7" stroke="#0E1013" strokeWidth="1.2" strokeLinejoin="round">
+                <path d="M9 11V5a1.5 1.5 0 0 1 3 0v5.2l5 1.1a2 2 0 0 1 1.5 2.3l-.8 5.2A2.5 2.5 0 0 1 15.2 21H12a3 3 0 0 1-2.4-1.2l-3.3-4.4a1.6 1.6 0 0 1 2.4-2.1L9 14z" />
+              </svg>
+            </span>
+          )}
 
           <div className="min-h-0 flex-1 overflow-y-auto px-4 pb-3 pt-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
             {tab === "treino" && (
@@ -323,10 +332,18 @@ export function AppMockup({ className = "" }: { className?: string }) {
         </div>
       </div>
 
-      <p className="mt-5 flex items-center justify-center gap-2 font-mono text-[10px] uppercase tracking-[.22em] text-fg-subtle">
-        <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-lime" />
-        Toque e experimente
-      </p>
+      <div className="mt-6 flex flex-col items-center gap-2 text-center">
+        <p className="inline-flex items-center gap-2.5 rounded-full bg-lime px-5 py-3 text-[15px] font-bold leading-none text-onlime shadow-[0_0_32px_rgba(168,255,31,.35)] sm:text-[17px]">
+          <span className="relative flex h-2.5 w-2.5">
+            <span className="absolute inline-flex h-full w-full rounded-full bg-ink opacity-60 motion-safe:animate-ping" />
+            <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-ink" />
+          </span>
+          {tocou ? "É o app de verdade. Continue tocando!" : "Toque no celular e experimente"}
+        </p>
+        <p className="max-w-[28ch] text-[13px] leading-snug text-fg-muted sm:text-[14px]">
+          Este celular é interativo: abra o vídeo, marque o treino e converse com o Luan.
+        </p>
+      </div>
 
       <div className="absolute -left-36 top-[48%] hidden animate-floaty rounded-2xl border border-white/10 bg-ink/85 px-3.5 py-2.5 shadow-2xl backdrop-blur-xl xl:block">
         <p className="font-mono text-[9px] uppercase tracking-[.2em] text-lime">App personalizado</p>
