@@ -25,7 +25,7 @@ export function Aplicativo() {
       />
       <div className="mx-auto grid max-w-[1240px] items-center gap-10 px-5 py-[clamp(52px,8vw,116px)] lg:grid-cols-[.8fr_1.2fr] lg:gap-20">
         <Reveal variant="scale" className="order-2 lg:order-1">
-          <Tilt className="mx-auto max-w-[270px] sm:max-w-none">
+          <Tilt className="mx-auto max-w-[300px] sm:max-w-none">
             <AppMockup />
           </Tilt>
         </Reveal>

@@ -66,7 +66,9 @@ export function AppMockup({ className = "" }: { className?: string }) {
   const chips = Object.keys(respostas).filter((q) => !usadas.includes(q));
 
   return (
-    <div className={`relative mx-auto w-[min(100%,290px)] ${className}`} onPointerDownCapture={() => setTocou(true)}>
+    <div className={`relative mx-auto flex w-[min(100%,290px)] flex-col ${className}`}>
+      {/* Só um toque de verdade (click) esconde a dica; rolar a página com o dedo não conta */}
+      <div className="relative order-2 lg:order-1" onClickCapture={() => setTocou(true)}>
       <div aria-hidden="true" className="absolute -inset-10 -z-10 rounded-full bg-lime/[.16] blur-3xl" />
 
       <div className="relative aspect-[9/17] overflow-hidden rounded-[44px] border border-white/15 bg-ink-deep p-2.5 shadow-[0_40px_90px_-30px_rgba(0,0,0,.9),0_0_0_1px_rgba(168,255,31,.12)]">
@@ -332,19 +334,6 @@ export function AppMockup({ className = "" }: { className?: string }) {
         </div>
       </div>
 
-      <div className="mt-6 flex flex-col items-center gap-2 text-center">
-        <p className="inline-flex items-center gap-2.5 rounded-full bg-lime px-5 py-3 text-[15px] font-bold leading-none text-onlime shadow-[0_0_32px_rgba(168,255,31,.35)] sm:text-[17px]">
-          <span className="relative flex h-2.5 w-2.5">
-            <span className="absolute inline-flex h-full w-full rounded-full bg-ink opacity-60 motion-safe:animate-ping" />
-            <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-ink" />
-          </span>
-          {tocou ? "É o app de verdade. Continue tocando!" : "Toque no celular e experimente"}
-        </p>
-        <p className="max-w-[28ch] text-[13px] leading-snug text-fg-muted sm:text-[14px]">
-          Este celular é interativo: abra o vídeo, marque o treino e converse com o Luan.
-        </p>
-      </div>
-
       <div className="absolute -left-36 top-[48%] hidden animate-floaty rounded-2xl border border-white/10 bg-ink/85 px-3.5 py-2.5 shadow-2xl backdrop-blur-xl xl:block">
         <p className="font-mono text-[9px] uppercase tracking-[.2em] text-lime">App personalizado</p>
         <p className="text-[13px] font-semibold text-fg">Feito para o seu treino</p>
@@ -355,6 +344,33 @@ export function AppMockup({ className = "" }: { className?: string }) {
       >
         <p className="font-mono text-[9px] uppercase tracking-[.2em] text-lime">Online</p>
         <p className="text-[13px] font-semibold text-fg">De onde você estiver</p>
+      </div>
+      </div>
+
+      {/* Convite para tocar: no celular fica ACIMA do aparelho, para ser visto antes de rolar */}
+      <div className="relative left-1/2 order-1 mb-6 flex w-[min(92vw,360px)] -translate-x-1/2 flex-col items-center gap-2.5 text-center lg:order-2 lg:mb-0 lg:mt-6">
+        <p className="inline-flex items-center gap-2.5 rounded-full bg-lime px-5 py-3.5 text-[16px] font-bold leading-tight text-onlime shadow-[0_0_32px_rgba(168,255,31,.4)] sm:text-[17px]">
+          <span className="relative flex h-3 w-3 flex-none">
+            <span className="absolute inline-flex h-full w-full rounded-full bg-ink opacity-60 motion-safe:animate-ping" />
+            <span className="relative inline-flex h-3 w-3 rounded-full bg-ink" />
+          </span>
+          {tocou ? "É o app de verdade. Continue tocando!" : "Toque no celular e experimente"}
+        </p>
+        <p className="max-w-[30ch] text-[14px] leading-snug text-fg-muted">
+          Este celular é interativo: abra o vídeo, marque o treino e converse com o Luan.
+        </p>
+      </div>
+
+      {/* Frases que, no computador grande, flutuam ao lado do celular; no celular viram dois selos */}
+      <div className="relative left-1/2 order-1 mb-5 flex w-[min(92vw,360px)] -translate-x-1/2 justify-center gap-2.5 lg:order-3 lg:mb-0 lg:mt-5 xl:hidden">
+        <div className="flex-1 rounded-2xl border border-lime/25 bg-ink/85 px-3 py-2.5 text-left shadow-xl">
+          <p className="font-mono text-[9px] uppercase tracking-[.18em] text-lime">App personalizado</p>
+          <p className="text-[13px] font-semibold leading-snug text-fg">Feito para o seu treino</p>
+        </div>
+        <div className="flex-1 rounded-2xl border border-lime/25 bg-ink/85 px-3 py-2.5 text-left shadow-xl">
+          <p className="font-mono text-[9px] uppercase tracking-[.18em] text-lime">Online</p>
+          <p className="text-[13px] font-semibold leading-snug text-fg">De onde você estiver</p>
+        </div>
       </div>
     </div>
   );
