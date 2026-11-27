@@ -3,6 +3,7 @@ import { siteConfig, navLinks } from "@/config/site";
 import { whatsappLinks } from "@/lib/whatsapp";
 import { IconInstagram } from "@/components/icons";
 import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
+import { DevCredit } from "@/components/devcredit/DevCredit";
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -35,7 +36,7 @@ export function Footer() {
           ))}
         </nav>
 
-        <div className="grid gap-3 sm:flex sm:flex-wrap sm:items-center md:justify-end">
+        <div className="flex flex-wrap items-center gap-3 md:justify-end">
           <a
             href={siteConfig.instagramUrl}
             target="_blank"
@@ -45,13 +46,8 @@ export function Footer() {
           >
             <IconInstagram className="h-5 w-5 text-lime transition-transform duration-300 group-hover:scale-110" />
           </a>
-          <WhatsAppButton
-            href={whatsappLinks.geral}
-            section="rodape"
-            size="md"
-            className="w-12 gap-0 !px-0"
-          >
-            <span className="sr-only">WhatsApp</span>
+          <WhatsAppButton href={whatsappLinks.geral} section="rodape" iconOnly>
+            Chamar no WhatsApp
           </WhatsAppButton>
         </div>
       </div>
@@ -63,6 +59,10 @@ export function Footer() {
         <p>
           CREF {siteConfig.cref} · {siteConfig.city}
         </p>
+      </div>
+
+      <div className="border-t border-white/[.06] px-5 py-8">
+        <DevCredit projeto="o site do Luan Tavares" />
       </div>
     </footer>
   );

@@ -14,6 +14,8 @@ type Props = {
   size?: "md" | "lg";
   icon?: boolean;
   arrow?: boolean;
+  /** Círculo só com o ícone (o texto fica só para leitores de tela). */
+  iconOnly?: boolean;
   className?: string;
 };
 
@@ -35,6 +37,7 @@ export function WhatsAppButton({
   size = "md",
   icon = true,
   arrow = false,
+  iconOnly = false,
   className,
 }: Props) {
   return (
@@ -44,10 +47,19 @@ export function WhatsAppButton({
       rel="noopener"
       data-wa={section}
       onClick={() => trackWhatsAppClick(section)}
-      className={cn(base, variants[variant], sizes[size], className)}
+      className={cn(base, variants[variant], iconOnly ? "h-12 w-12 flex-none" : sizes[size], className)}
     >
-      {icon && <IconWhatsApp className="relative h-5 w-5 flex-none" />}
-      <span className="relative">{children}</span>
+      {iconOnly ? (
+        <>
+          <IconWhatsApp className="relative block h-6 w-6" />
+          <span className="sr-only">{children}</span>
+        </>
+      ) : (
+        <>
+          {icon && <IconWhatsApp className="relative h-5 w-5 flex-none" />}
+          <span className="relative">{children}</span>
+        </>
+      )}
       {arrow && (
         <IconArrow className="relative h-4 w-4 flex-none transition-transform duration-300 group-hover:translate-x-1" />
       )}
