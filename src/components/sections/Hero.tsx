@@ -37,19 +37,14 @@ export function Hero() {
         aria-hidden="true"
         className="pointer-events-none absolute inset-x-0 bottom-0 -z-20 h-32 bg-gradient-to-t from-ink to-transparent"
       />
-      <div
-        aria-hidden="true"
-        className="bg-grid pointer-events-none absolute inset-0 -z-10 opacity-40 [mask-image:radial-gradient(ellipse_at_70%_30%,#000,transparent_72%)]"
-      />
 
       <div className="mx-auto grid min-h-[100svh] max-w-[1240px] md:min-h-[88svh] items-end gap-8 px-5 pb-10 pt-[92px] lg:items-center lg:pb-14 sm:gap-12 sm:pt-[104px] lg:gap-10 lg:pt-24">
         <HeroParallax className="max-w-[860px]">
           <p
-            className="mb-6 hidden animate-fade-up items-center gap-3 rounded-full sm:inline-flex border border-lime/25 bg-lime/[.07] px-4 py-2 font-mono text-[11px] font-medium uppercase tracking-[.22em] text-lime"
+            className="mb-6 hidden animate-fade-up items-center gap-3 rounded-full sm:inline-flex border border-lime/25 bg-lime/[.07] px-4 py-2 text-[12px] font-semibold uppercase tracking-[.14em] text-lime"
             style={{ animationDelay: "100ms" }}
           >
             <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-lime opacity-70" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-lime" />
             </span>
             Consultoria online · Todo o Brasil

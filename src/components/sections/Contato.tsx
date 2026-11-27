@@ -38,10 +38,6 @@ export function Contato() {
       id="contato"
       className="relative isolate overflow-hidden bg-[radial-gradient(900px_520px_at_50%_0%,rgba(168,255,31,.13),transparent_65%)]"
     >
-      <div
-        aria-hidden="true"
-        className="bg-grid pointer-events-none absolute inset-0 -z-10 [mask-image:radial-gradient(ellipse_at_50%_0%,#000,transparent_70%)]"
-      />
       <div className="mx-auto grid max-w-[1240px] items-start gap-12 px-5 py-[clamp(52px,8vw,116px)] lg:grid-cols-[1fr_1fr] lg:gap-24">
         <Reveal>
           <h2 className="mb-6 font-serif text-[clamp(38px,5.4vw,76px)] font-bold leading-[1.02] text-fg">
@@ -67,7 +63,7 @@ export function Contato() {
             </a>
           </div>
 
-          <ul className="mt-10 grid gap-3 font-mono text-[13px] tracking-wide">
+          <ul className="mt-10 grid gap-1 text-[15px]">
             <li className="flex items-center gap-3 text-fg-muted">
               <IconWhatsApp className="h-5 w-5 text-lime" />
               {siteConfig.whatsappDisplay}
@@ -78,9 +74,10 @@ export function Contato() {
                 target="_blank"
                 rel="noopener"
                 aria-label={`Instagram @${siteConfig.instagram}`}
-                className="flex items-center gap-3 text-fg-muted transition-colors hover:text-lime"
+                className="flex min-h-[44px] items-center gap-3 text-fg-muted transition-colors hover:text-lime"
               >
                 <IconInstagram className="h-5 w-5 text-lime" />
+                @{siteConfig.instagram}
               </a>
             </li>
           </ul>
@@ -92,7 +89,7 @@ export function Contato() {
             noValidate
             className="grid gap-5 rounded-3xl border border-white/10 bg-ink-card/80 p-7 backdrop-blur-xl sm:p-9"
           >
-            <p className="font-mono text-[11px] font-medium uppercase tracking-[.26em] text-lime">
+            <p className="text-[13px] font-semibold uppercase tracking-[.14em] text-lime">
               Prefere que eu te chame?
             </p>
 
@@ -111,7 +108,7 @@ export function Contato() {
               Seu objetivo
               <input
                 name="objetivo"
-                placeholder="Ex.: ganhar massa, emagrecer, voltar a treinar"
+                placeholder="Ex.: ganhar massa"
                 value={objetivo}
                 onChange={(e) => (setObjetivo(e.target.value), setErro(""))}
                 className={campo}

@@ -11,7 +11,7 @@ const config: Config = {
         "ink-deep": "#0A0B0D",
         lime: { DEFAULT: "#A8FF1F", dark: "#5FE31B", soft: "#C8FF6B" },
         onlime: "#0E1209",
-        fg: { DEFAULT: "#F4F6F7", muted: "#B9BEC4", subtle: "#8B9199", faint: "#646A72" },
+        fg: { DEFAULT: "#F4F6F7", muted: "#B9BEC4", subtle: "#8B9199", faint: "#8A9099" },
         danger: "#FF6B6B",
       },
       fontFamily: {

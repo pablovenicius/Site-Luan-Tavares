@@ -69,14 +69,14 @@ export function AppMockup({ className = "" }: { className?: string }) {
     <div className={`relative mx-auto flex w-[min(100%,290px)] flex-col ${className}`}>
       {/* Só um toque de verdade (click) esconde a dica; rolar a página com o dedo não conta */}
       <div className="relative order-2 lg:order-1" onClickCapture={() => setTocou(true)}>
-      <div aria-hidden="true" className="absolute -inset-10 -z-10 rounded-full bg-lime/[.16] blur-3xl" />
+      <div aria-hidden="true" className="absolute -inset-10 -z-10 rounded-full bg-lime/[.07] blur-3xl" />
 
-      <div className="relative aspect-[9/17] overflow-hidden rounded-[44px] border border-white/15 bg-ink-deep p-2.5 shadow-[0_40px_90px_-30px_rgba(0,0,0,.9),0_0_0_1px_rgba(168,255,31,.12)]">
+      <div className="relative aspect-[9/18] overflow-hidden rounded-[44px] border border-white/15 bg-ink-deep p-2.5 shadow-[0_40px_90px_-30px_rgba(0,0,0,.9),0_0_0_1px_rgba(168,255,31,.12)]">
         <div className="relative flex h-full flex-col overflow-hidden rounded-[34px] bg-[linear-gradient(180deg,#14181c_0%,#0c0e11_100%)]">
           <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 z-10 h-16 animate-scan bg-gradient-to-b from-transparent via-lime/[.10] to-transparent" />
           <div className="mx-auto mt-2.5 h-5 w-24 flex-none rounded-full bg-black" />
           {!tocou && (
-            <span aria-hidden="true" className="pointer-events-none absolute bottom-[72px] right-6 z-20 motion-safe:animate-bounce">
+            <span aria-hidden="true" className="pointer-events-none absolute bottom-[60px] right-2 z-20 motion-safe:animate-bounce">
               <span className="absolute -inset-3 rounded-full bg-lime/40 motion-safe:animate-ping" />
               <svg viewBox="0 0 24 24" className="relative h-9 w-9 drop-shadow-[0_4px_10px_rgba(0,0,0,.6)]" fill="#F4F6F7" stroke="#0E1013" strokeWidth="1.2" strokeLinejoin="round">
                 <path d="M9 11V5a1.5 1.5 0 0 1 3 0v5.2l5 1.1a2 2 0 0 1 1.5 2.3l-.8 5.2A2.5 2.5 0 0 1 15.2 21H12a3 3 0 0 1-2.4-1.2l-3.3-4.4a1.6 1.6 0 0 1 2.4-2.1L9 14z" />
@@ -153,7 +153,7 @@ export function AppMockup({ className = "" }: { className?: string }) {
                   </div>
                   <div className="h-1.5 overflow-hidden rounded-full bg-white/10">
                     <div
-                      className="h-full rounded-full bg-gradient-to-r from-lime-dark to-lime shadow-[0_0_12px_rgba(168,255,31,.7)] transition-all duration-500"
+                      className="h-full rounded-full bg-gradient-to-r from-lime-dark to-lime transition-all duration-500"
                       style={{ width: `${pct}%` }}
                     />
                   </div>
@@ -197,7 +197,7 @@ export function AppMockup({ className = "" }: { className?: string }) {
                     className="absolute inset-0 grid place-items-center"
                   >
                     {!tocando && (
-                      <span className="grid h-12 w-12 place-items-center rounded-full bg-lime text-onlime shadow-[0_0_30px_rgba(168,255,31,.5)]">
+                      <span className="grid h-12 w-12 place-items-center rounded-full bg-lime text-onlime">
                         <IconPlay className="h-6 w-6" />
                       </span>
                     )}
@@ -220,7 +220,7 @@ export function AppMockup({ className = "" }: { className?: string }) {
                   <button
                     type="button"
                     onClick={() => abrirVideo((sel + 1) % total)}
-                    className="flex-1 rounded-full border border-white/15 py-2 text-[11px] font-semibold text-fg-muted transition-colors hover:border-lime/50 hover:text-lime"
+                    className="flex-1 min-h-[44px] rounded-full border border-white/15 py-2 text-[11px] font-semibold text-fg-muted transition-colors hover:border-lime/50 hover:text-lime"
                   >
                     Próximo
                   </button>
@@ -230,7 +230,7 @@ export function AppMockup({ className = "" }: { className?: string }) {
                       alternar(sel);
                       setTab("treino");
                     }}
-                    className="flex-1 rounded-full bg-lime py-2 text-[11px] font-bold text-onlime"
+                    className="flex-1 min-h-[44px] rounded-full bg-lime py-2 text-[11px] font-bold text-onlime"
                   >
                     {feitos[sel] ? "Desmarcar" : "Marcar feito"}
                   </button>
@@ -255,7 +255,7 @@ export function AppMockup({ className = "" }: { className?: string }) {
                     >
                       <span
                         className={`block w-full rounded-t-md transition-all duration-500 ${
-                          i === semana ? "bg-lime shadow-[0_0_14px_rgba(168,255,31,.6)]" : "bg-white/15 group-hover:bg-lime/40"
+                          i === semana ? "bg-lime" : "bg-white/15 group-hover:bg-lime/40"
                         }`}
                         style={{ height: `${h}%` }}
                       />
@@ -324,7 +324,7 @@ export function AppMockup({ className = "" }: { className?: string }) {
                 type="button"
                 onClick={() => setTab(id)}
                 aria-current={tab === id}
-                className={`flex flex-col items-center gap-0.5 rounded-lg py-1 transition-colors ${tab === id ? "text-lime" : "text-fg-subtle hover:text-fg"}`}
+                className={`flex flex-col items-center justify-center gap-0.5 rounded-lg min-h-[44px] py-1 transition-colors ${tab === id ? "text-lime" : "text-fg-subtle hover:text-fg"}`}
               >
                 <Icon className="h-[18px] w-[18px]" />
                 <span className="font-mono text-[8px] uppercase tracking-wider">{rotulo}</span>
@@ -349,7 +349,7 @@ export function AppMockup({ className = "" }: { className?: string }) {
 
       {/* Convite para tocar: no celular fica ACIMA do aparelho, para ser visto antes de rolar */}
       <div className="relative left-1/2 order-1 mb-6 flex w-[min(92vw,360px)] -translate-x-1/2 flex-col items-center gap-2.5 text-center lg:order-2 lg:mb-0 lg:mt-6">
-        <p className="inline-flex items-center gap-2.5 rounded-full bg-lime px-5 py-3.5 text-[16px] font-bold leading-tight text-onlime shadow-[0_0_32px_rgba(168,255,31,.4)] sm:text-[17px]">
+        <p className="inline-flex items-center gap-2.5 rounded-full bg-lime px-5 py-3.5 text-[16px] font-bold leading-tight text-onlime shadow-[0_10px_24px_-12px_rgba(0,0,0,.8)] sm:text-[17px]">
           <span className="relative flex h-3 w-3 flex-none">
             <span className="absolute inline-flex h-full w-full rounded-full bg-ink opacity-60 motion-safe:animate-ping" />
             <span className="relative inline-flex h-3 w-3 rounded-full bg-ink" />
@@ -364,11 +364,11 @@ export function AppMockup({ className = "" }: { className?: string }) {
       {/* Frases que, no computador grande, flutuam ao lado do celular; no celular viram dois selos */}
       <div className="relative left-1/2 order-1 mb-5 flex w-[min(92vw,360px)] -translate-x-1/2 justify-center gap-2.5 lg:order-3 lg:mb-0 lg:mt-5 xl:hidden">
         <div className="flex-1 rounded-2xl border border-lime/25 bg-ink/85 px-3 py-2.5 text-left shadow-xl">
-          <p className="font-mono text-[9px] uppercase tracking-[.18em] text-lime">App personalizado</p>
+          <p className="font-mono text-[11px] uppercase tracking-[.14em] text-lime">App personalizado</p>
           <p className="text-[13px] font-semibold leading-snug text-fg">Feito para o seu treino</p>
         </div>
         <div className="flex-1 rounded-2xl border border-lime/25 bg-ink/85 px-3 py-2.5 text-left shadow-xl">
-          <p className="font-mono text-[9px] uppercase tracking-[.18em] text-lime">Online</p>
+          <p className="font-mono text-[11px] uppercase tracking-[.14em] text-lime">Online</p>
           <p className="text-[13px] font-semibold leading-snug text-fg">De onde você estiver</p>
         </div>
       </div>

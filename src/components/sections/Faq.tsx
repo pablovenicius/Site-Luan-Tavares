@@ -11,7 +11,7 @@ export function Faq() {
 
   return (
     <section id="faq" className="border-y border-white/[.06] bg-ink-alt">
-      <div className="mx-auto grid max-w-[1240px] gap-14 px-5 py-[clamp(52px,8vw,116px)] lg:grid-cols-[.8fr_1.2fr] lg:gap-24">
+      <div className="mx-auto grid max-w-[1240px] grid-cols-[minmax(0,1fr)] gap-14 px-5 py-[clamp(52px,8vw,116px)] lg:grid-cols-[.8fr_1.2fr] lg:gap-24">
         <Reveal className="lg:sticky lg:top-32 lg:self-start">
           <SectionLabel index="05">Dúvidas</SectionLabel>
           <h2 className="font-serif text-[clamp(30px,4.2vw,54px)] font-bold leading-[1.06] text-fg">
@@ -19,7 +19,7 @@ export function Faq() {
           </h2>
         </Reveal>
 
-        <div className="grid gap-3">
+        <div className="grid grid-cols-[minmax(0,1fr)] gap-3">
           {faqItems.map((item, i) => {
             const on = aberto === i;
             return (
@@ -36,7 +36,7 @@ export function Faq() {
                       aria-expanded={on}
                       aria-controls={`faq-${i}`}
                       onClick={() => setAberto(on ? null : i)}
-                      className="flex min-h-[64px] w-full items-center justify-between gap-6 px-6 py-5 text-left text-[18px] font-bold text-fg"
+                      className="flex min-h-[64px] w-full items-center justify-between gap-3 px-4 py-5 text-left text-[17px] min-[400px]:gap-6 min-[400px]:px-6 min-[400px]:text-[18px] font-bold text-fg"
                     >
                       {item.pergunta}
                       <span
@@ -46,7 +46,7 @@ export function Faq() {
                           on ? "border-lime bg-lime text-onlime" : "border-white/20 text-lime"
                         )}
                       >
-                        Saiba mais
+                        <span className="max-[359px]:hidden">Saiba mais</span>
                         <svg
                           viewBox="0 0 24 24"
                           fill="none"

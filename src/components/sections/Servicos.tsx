@@ -64,7 +64,7 @@ export function Servicos() {
               }`}
             >
               <div className="mb-6 flex items-start justify-between sm:mb-8">
-                <div className="grid h-14 w-14 place-items-center rounded-2xl border border-lime/25 bg-lime/10 text-lime transition-transform duration-500 group-hover:-rotate-6 group-hover:scale-110">
+                <div className="grid h-14 w-14 place-items-center rounded-2xl border border-lime/25 bg-lime/10 text-lime">
                   <Icon className="h-7 w-7" />
                 </div>
                 <span className="font-mono text-4xl font-bold text-white/[.07] transition-colors duration-500 group-hover:text-lime/25">
@@ -73,7 +73,7 @@ export function Servicos() {
               </div>
 
               {destaque && (
-                <span className="mb-4 inline-flex w-fit items-center gap-2 rounded-full bg-lime px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-[.18em] text-onlime">
+                <span className="mb-4 inline-flex w-fit items-center gap-2 rounded-full bg-lime px-3 py-1 font-mono text-[11px] font-bold uppercase tracking-[.18em] text-onlime">
                   Foco principal
                 </span>
               )}

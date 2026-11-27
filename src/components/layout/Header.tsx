@@ -45,7 +45,7 @@ export function Header() {
       >
         <div
           className={cn(
-            "mx-auto flex max-w-[1240px] items-center justify-between gap-6 px-5 transition-all duration-500",
+            "mx-auto flex max-w-[1240px] items-center justify-between gap-3 px-4 min-[360px]:gap-6 min-[360px]:px-5 transition-all duration-500",
             scrolled ? "py-2" : "py-3.5 md:py-5"
           )}
         >
@@ -57,7 +57,7 @@ export function Header() {
               height={2187}
               sizes="140px"
               priority
-              className={cn("w-auto transition-all duration-500", scrolled ? "h-[44px] md:h-[54px]" : "h-[56px] md:h-[68px]")}
+              className={cn("w-auto transition-all duration-500", scrolled ? "h-[40px] min-[360px]:h-[44px] md:h-[54px]" : "h-[48px] min-[360px]:h-[56px] md:h-[68px]")}
             />
           </a>
 
@@ -117,7 +117,7 @@ export function Header() {
               onClick={() => setOpen(false)}
               style={{ transitionDelay: open ? `${120 + i * 60}ms` : "0ms" }}
               className={cn(
-                "border-b border-white/[.07] py-5 font-serif text-4xl font-bold text-fg transition-all duration-500",
+                "border-b border-white/[.07] py-5 font-serif text-4xl font-bold text-fg transition-all duration-500 focus-visible:text-lime focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-lime",
                 open ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"
               )}
             >

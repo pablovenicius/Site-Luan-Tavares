@@ -32,9 +32,9 @@ export function Galeria() {
               alt={f?.alt ?? legenda}
               ratio={ratios[i % ratios.length] ?? "4/5"}
               speed={speeds[i % speeds.length] ?? 0.1}
-              className={i % 3 === 1 ? "lg:mt-14" : ""}
+              className=""
             >
-              <span className="absolute bottom-3 left-3 rounded-full border border-white/10 bg-ink/80 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[.16em] text-lime backdrop-blur-xl">
+              <span className="absolute bottom-3 left-4 right-4 text-[14px] font-semibold leading-snug text-white [text-shadow:0_1px_8px_rgba(0,0,0,.7)]">
                 {legenda}
               </span>
             </Photo>
