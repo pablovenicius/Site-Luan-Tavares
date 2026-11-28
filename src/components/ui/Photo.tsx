@@ -86,7 +86,7 @@ export function Photo({
     <div ref={outer} style={{ aspectRatio: ratio }} className={cn("relative", className)}>
     <div
       ref={frame}
-      className="ph group absolute inset-0 isolate overflow-hidden rounded-[20px] bg-ink-card shadow-[0_40px_90px_-30px_rgba(0,0,0,.7)] ring-1 ring-white/10"
+      className="ph group absolute inset-0 isolate overflow-hidden rounded-[20px] bg-ink-card ring-1 ring-white/10"
     >
       {/* camada com parallax (maior que a moldura para não mostrar bordas) */}
       <div ref={inner} className="absolute inset-x-0 -inset-y-[9%] will-change-transform">
@@ -112,7 +112,7 @@ export function Photo({
               height={2187}
               sizes="(min-width: 1024px) 380px, 70vw"
               priority={priority}
-              className="relative w-[78%] drop-shadow-[0_20px_50px_rgba(168,255,31,.18)]"
+              className="relative w-[78%]"
             />
           </div>
         )}
@@ -125,11 +125,11 @@ export function Photo({
       />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 rounded-[20px] ring-1 ring-inset ring-lime/0 transition-all duration-500 group-hover:ring-lime/40"
+        className="pointer-events-none absolute inset-0 rounded-[20px] ring-1 ring-inset ring-lime/0 transition-colors duration-300 group-hover:ring-lime/40"
       />
       {!src && label && (
         <div className="absolute inset-x-0 bottom-0 p-4 text-center">
-          <span className="inline-block rounded-full border border-lime/25 bg-ink/80 px-3.5 py-1.5 font-mono text-[10px] uppercase tracking-[.18em] text-lime backdrop-blur">
+          <span className="inline-block rounded-full border border-lime/25 bg-ink/80 px-3.5 py-1.5 font-mono text-[11px] text-lime">
             {label}
           </span>
         </div>

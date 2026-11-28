@@ -40,8 +40,8 @@ export function Contato() {
     >
       <div className="mx-auto grid max-w-[1240px] items-start gap-12 px-5 py-[clamp(52px,8vw,116px)] lg:grid-cols-[1fr_1fr] lg:gap-24">
         <Reveal>
-          <h2 className="mb-6 font-serif text-[clamp(38px,5.4vw,76px)] font-bold leading-[1.02] text-fg">
-            Pronto para <span className="italic text-lime">começar?</span>
+          <h2 className="mb-6 font-serif text-[clamp(38px,5.4vw,76px)] font-medium leading-[1.02] text-fg">
+            Pronto para <span className="text-lime">começar?</span>
           </h2>
           <p className="mb-10 max-w-[46ch] text-lg leading-relaxed text-fg-muted">
             Me conta seu objetivo e montamos um planejamento de treino sob medida, online ou presencial
@@ -56,7 +56,7 @@ export function Contato() {
               href={siteConfig.instagramUrl}
               target="_blank"
               rel="noopener"
-              className="group inline-flex min-h-[56px] w-full items-center justify-center gap-2.5 rounded-full border border-white/20 px-7 sm:w-auto text-base font-bold text-fg transition-all duration-300 hover:border-lime/70 hover:bg-lime/[.07] hover:text-lime"
+              className="group inline-flex min-h-[56px] w-full items-center justify-center gap-2.5 rounded-full border border-white/20 px-7 sm:w-auto text-base font-semibold text-fg transition-colors duration-200 hover:border-lime/70 hover:bg-lime/[.07] hover:text-lime"
             >
               <IconInstagram className="h-5 w-5 text-lime" />
               Instagram
@@ -87,9 +87,9 @@ export function Contato() {
           <form
             onSubmit={handleSubmit}
             noValidate
-            className="grid gap-5 rounded-3xl border border-white/10 bg-ink-card/80 p-7 backdrop-blur-xl sm:p-9"
+            className="grid gap-5 rounded-3xl border border-white/10 bg-ink-card p-7 sm:p-9"
           >
-            <p className="text-[13px] font-semibold uppercase tracking-[.14em] text-lime">
+            <p className="text-[14px] font-medium text-lime">
               Prefere que eu te chame?
             </p>
 
@@ -141,7 +141,7 @@ export function Contato() {
 
             <button
               type="submit"
-              className="min-h-[56px] rounded-full bg-lime px-8 text-base font-bold text-onlime shadow-[0_10px_34px_-8px_rgba(168,255,31,.55)] transition-all hover:-translate-y-0.5 hover:bg-lime-soft"
+              className="min-h-[56px] rounded-full bg-lime px-8 text-base font-bold text-onlime transition-colors hover:bg-lime-soft"
             >
               Enviar pelo WhatsApp
             </button>

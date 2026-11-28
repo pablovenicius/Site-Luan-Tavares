@@ -14,8 +14,8 @@ export function Faq() {
       <div className="mx-auto grid max-w-[1240px] grid-cols-[minmax(0,1fr)] gap-14 px-5 py-[clamp(52px,8vw,116px)] lg:grid-cols-[.8fr_1.2fr] lg:gap-24">
         <Reveal className="lg:sticky lg:top-32 lg:self-start">
           <SectionLabel index="05">Dúvidas</SectionLabel>
-          <h2 className="font-serif text-[clamp(30px,4.2vw,54px)] font-bold leading-[1.06] text-fg">
-            Antes de <span className="italic text-lime">começar.</span>
+          <h2 className="font-serif text-[clamp(30px,4.2vw,54px)] font-medium leading-[1.06] text-fg">
+            Antes de <span className="text-lime">começar.</span>
           </h2>
         </Reveal>
 
@@ -42,7 +42,7 @@ export function Faq() {
                       <span
                         aria-hidden="true"
                         className={cn(
-                          "flex flex-none items-center gap-1.5 rounded-full border px-3.5 py-2 text-[12px] font-semibold leading-none transition-all duration-500",
+                          "flex flex-none items-center gap-1.5 rounded-full border px-3.5 py-2 text-[12px] font-semibold leading-none transition-colors duration-300",
                           on ? "border-lime bg-lime text-onlime" : "border-white/20 text-lime"
                         )}
                       >
@@ -65,7 +65,7 @@ export function Faq() {
                     id={`faq-${i}`}
                     role="region"
                     className={cn(
-                      "grid transition-all duration-500 ease-out",
+                      "grid transition-[grid-template-rows,opacity] duration-300 ease-out",
                       on ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
                     )}
                   >

@@ -28,8 +28,8 @@ export function Aplicativo() {
         <div className="max-lg:contents lg:order-2">
           <Reveal className="max-lg:order-1">
             <SectionLabel index="01">Sobre</SectionLabel>
-            <h2 className="mb-5 font-serif text-[clamp(30px,4.2vw,54px)] font-bold leading-[1.06] text-fg">
-              Mais do que passar exercícios, <span className="italic text-lime">acompanho o seu processo.</span>
+            <h2 className="mb-5 font-serif text-[clamp(30px,4.2vw,54px)] font-medium leading-[1.06] text-fg">
+              Mais do que passar exercícios, <span className="text-lime">acompanho o seu processo.</span>
             </h2>
             <p className="mb-8 max-w-[54ch] text-lg max-lg:mb-0 leading-relaxed text-fg-muted">
               Sou o Luan, personal trainer em {siteConfig.city} e também o seu treinador online. Você treina
@@ -43,7 +43,7 @@ export function Aplicativo() {
               <Reveal key={titulo} delay={i * 90} className="h-full">
                 <Spot
                   as="div"
-                  className="group h-full rounded-2xl border border-white/[.09] bg-ink/70 p-4 transition-all duration-500 hover:border-lime/40 sm:p-5"
+                  className="group h-full rounded-2xl border border-white/[.09] bg-ink/70 p-4 transition-colors duration-300 hover:border-lime/40 sm:p-5"
                 >
                   <span className="mb-3 grid h-10 w-10 place-items-center rounded-xl border border-lime/25 bg-lime/10 text-lime  sm:mb-4 sm:h-11 sm:w-11">
                     <Icon className="h-5 w-5" />
@@ -60,7 +60,7 @@ export function Aplicativo() {
               <WhatsAppButton href={whatsappLinks.online} section="sobre" arrow className="w-full sm:w-auto">
                 Quero a consultoria online
               </WhatsAppButton>
-              <p className="font-mono text-[12px] uppercase tracking-[.16em] text-fg-subtle">
+              <p className="font-mono text-[12px] text-fg-subtle">
                 CREF {siteConfig.cref} · {siteConfig.city}
               </p>
             </div>

@@ -41,7 +41,7 @@ export function Hero() {
       <div className="mx-auto grid min-h-[100svh] max-w-[1240px] md:min-h-[88svh] items-end gap-8 px-5 pb-10 pt-[92px] lg:items-center lg:pb-14 sm:gap-12 sm:pt-[104px] lg:gap-10 lg:pt-24">
         <HeroParallax className="max-w-[860px]">
           <p
-            className="mb-6 hidden animate-fade-up items-center gap-3 rounded-full sm:inline-flex border border-lime/25 bg-lime/[.07] px-4 py-2 text-[12px] font-semibold uppercase tracking-[.14em] text-lime"
+            className="mb-6 hidden animate-fade-up items-center gap-3 sm:inline-flex text-[14px] font-medium text-lime"
             style={{ animationDelay: "100ms" }}
           >
             <span className="relative flex h-2 w-2">
@@ -50,10 +50,10 @@ export function Hero() {
             Consultoria online · Todo o Brasil
           </p>
 
-          <h1 className="mb-4 font-serif text-[clamp(32px,6.2vw,88px)] sm:mb-6 font-bold leading-[1.02] tracking-[-.01em] text-fg">
+          <h1 className="mb-4 font-serif text-[clamp(32px,6.2vw,88px)] sm:mb-6 font-medium leading-[1.02] tracking-[-.01em] text-fg">
             <Words text="Seu treino online ou presencial," start={200} />
             <br />
-            <Words text="feito para você." start={700} className="text-shine italic" />
+            <Words text="feito para você." start={700} className="text-lime" />
           </h1>
 
           <p

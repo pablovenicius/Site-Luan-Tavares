@@ -43,7 +43,7 @@ export function MetodoTimeline({ etapas }: { etapas: readonly Etapa[] }) {
       <div aria-hidden="true" className="absolute bottom-2 left-[19px] top-2 w-px bg-white/10 sm:left-[27px]">
         <div
           ref={line}
-          className="h-full origin-top scale-y-0 bg-gradient-to-b from-lime via-lime to-lime-dark"
+          className="h-full origin-top scale-y-0 bg-lime"
         />
       </div>
 
@@ -51,7 +51,7 @@ export function MetodoTimeline({ etapas }: { etapas: readonly Etapa[] }) {
         <li key={e.numero} className="relative">
           <span
             className={cn(
-              "absolute -left-14 top-0 grid h-10 w-10 place-items-center rounded-full border text-xs font-bold transition-all duration-500 sm:-left-20 sm:h-14 sm:w-14 sm:text-sm",
+              "absolute -left-14 top-0 grid h-10 w-10 place-items-center rounded-full border text-xs font-semibold transition-colors duration-300 sm:-left-20 sm:h-14 sm:w-14 sm:text-sm",
               i <= ativo
                 ? "scale-100 border-lime bg-lime text-onlime"
                 : "scale-90 border-white/15 bg-ink text-fg-subtle"
@@ -59,8 +59,8 @@ export function MetodoTimeline({ etapas }: { etapas: readonly Etapa[] }) {
           >
             {e.numero}
           </span>
-          <div className={cn("transition-all duration-500", i <= ativo ? "opacity-100" : "opacity-80")}>
-            <h3 className="mb-2 font-serif text-[clamp(24px,2.6vw,34px)] font-bold text-fg">{e.titulo}</h3>
+          <div className={cn("transition-opacity duration-300", i <= ativo ? "opacity-100" : "opacity-80")}>
+            <h3 className="mb-2 font-serif text-[clamp(24px,2.6vw,34px)] font-medium text-fg">{e.titulo}</h3>
             <p className="max-w-[48ch] text-[17px] leading-relaxed text-fg-muted">{e.texto}</p>
           </div>
         </li>

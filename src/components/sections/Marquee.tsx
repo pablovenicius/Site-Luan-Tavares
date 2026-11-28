@@ -11,7 +11,7 @@ const itens = [
 export function Marquee() {
   const linha = itens.map((t) => (
     <span key={t} className="flex items-center gap-10 whitespace-nowrap">
-      <span className="font-serif text-[clamp(26px,3.6vw,44px)] font-bold italic text-fg/90">{t}</span>
+      <span className="font-serif text-[clamp(26px,3.6vw,44px)] font-bold text-fg/90">{t}</span>
       <span aria-hidden="true" className="h-2 w-2 rotate-45 bg-lime" />
     </span>
   ));

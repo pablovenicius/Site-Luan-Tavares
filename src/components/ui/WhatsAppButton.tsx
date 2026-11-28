@@ -20,14 +20,14 @@ type Props = {
 };
 
 const base =
-  "group relative inline-flex items-center justify-center gap-2.5 overflow-hidden rounded-full font-bold transition-all duration-300";
+  "group relative inline-flex items-center justify-center gap-2.5 overflow-hidden rounded-full font-semibold transition-colors duration-200";
 
 const variants = {
   solid:
-    "bg-lime text-onlime shadow-[0_1px_0_rgba(255,255,255,.25)_inset,0_8px_20px_-10px_rgba(0,0,0,.7)] hover:bg-lime-soft active:translate-y-px",
+    "bg-lime text-onlime hover:bg-lime-soft active:translate-y-px",
   outline: "border border-white/20 text-fg hover:border-lime/70 hover:bg-lime/[.07] hover:text-lime",
 };
-const sizes = { md: "min-h-[48px] px-6 text-[15px]", lg: "min-h-[56px] px-8 text-base" };
+const sizes = { md: "min-h-12 px-6 text-[15px]", lg: "min-h-14 px-8 text-base" };
 
 export function WhatsAppButton({
   href,
@@ -61,7 +61,7 @@ export function WhatsAppButton({
         </>
       )}
       {arrow && (
-        <IconArrow className="relative h-4 w-4 flex-none transition-transform duration-300 group-hover:translate-x-1" />
+        <IconArrow className="relative h-4 w-4 flex-none transition-transform duration-200 group-hover:translate-x-0.5" />
       )}
     </a>
   );

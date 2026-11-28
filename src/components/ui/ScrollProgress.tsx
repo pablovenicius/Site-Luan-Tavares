@@ -28,10 +28,10 @@ export function ScrollProgress() {
   }, []);
 
   return (
-    <div aria-hidden="true" className="pointer-events-none fixed inset-x-0 top-0 z-[120] h-[3px]">
+    <div aria-hidden="true" className="pointer-events-none fixed inset-x-0 top-0 z-[120] h-0.5">
       <div
         ref={bar}
-        className="h-full origin-left scale-x-0 bg-gradient-to-r from-lime-dark via-lime to-lime-soft"
+        className="h-full origin-left scale-x-0 bg-lime"
       />
     </div>
   );

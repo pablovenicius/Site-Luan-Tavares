@@ -69,16 +69,14 @@ export function AppMockup({ className = "" }: { className?: string }) {
     <div className={`relative mx-auto flex w-[min(100%,290px)] flex-col ${className}`}>
       {/* Só um toque de verdade (click) esconde a dica; rolar a página com o dedo não conta */}
       <div className="relative order-2 lg:order-1" onClickCapture={() => setTocou(true)}>
-      <div aria-hidden="true" className="absolute -inset-10 -z-10 rounded-full bg-lime/[.07] blur-3xl" />
 
-      <div className="relative aspect-[9/18] overflow-hidden rounded-[44px] border border-white/15 bg-ink-deep p-2.5 shadow-[0_40px_90px_-30px_rgba(0,0,0,.9),0_0_0_1px_rgba(168,255,31,.12)]">
+      <div className="relative aspect-[9/18] overflow-hidden rounded-[44px] border border-white/15 bg-ink-deep p-2.5">
         <div className="relative flex h-full flex-col overflow-hidden rounded-[34px] bg-[linear-gradient(180deg,#14181c_0%,#0c0e11_100%)]">
-          <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 z-10 h-16 animate-scan bg-gradient-to-b from-transparent via-lime/[.10] to-transparent" />
           <div className="mx-auto mt-2.5 h-5 w-24 flex-none rounded-full bg-black" />
           {!tocou && (
-            <span aria-hidden="true" className="pointer-events-none absolute bottom-[60px] right-2 z-20 motion-safe:animate-bounce">
-              <span className="absolute -inset-3 rounded-full bg-lime/40 motion-safe:animate-ping" />
-              <svg viewBox="0 0 24 24" className="relative h-9 w-9 drop-shadow-[0_4px_10px_rgba(0,0,0,.6)]" fill="#F4F6F7" stroke="#0E1013" strokeWidth="1.2" strokeLinejoin="round">
+            <span aria-hidden="true" className="pointer-events-none absolute bottom-[60px] right-2 z-20">
+              <span className="absolute -inset-3 rounded-full bg-lime/30" />
+              <svg viewBox="0 0 24 24" className="relative h-9 w-9" fill="#F4F6F7" stroke="#0E1013" strokeWidth="1.2" strokeLinejoin="round">
                 <path d="M9 11V5a1.5 1.5 0 0 1 3 0v5.2l5 1.1a2 2 0 0 1 1.5 2.3l-.8 5.2A2.5 2.5 0 0 1 15.2 21H12a3 3 0 0 1-2.4-1.2l-3.3-4.4a1.6 1.6 0 0 1 2.4-2.1L9 14z" />
               </svg>
             </span>
@@ -87,9 +85,9 @@ export function AppMockup({ className = "" }: { className?: string }) {
           <div className="min-h-0 flex-1 overflow-y-auto px-4 pb-3 pt-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
             {tab === "treino" && (
               <div>
-                <p className="font-mono text-[9px] uppercase tracking-[.24em] text-lime">Treino de hoje</p>
+                <p className="font-mono text-[9px] text-lime">Treino de hoje</p>
                 <div className="mt-1 flex items-end justify-between">
-                  <p className="font-serif text-[22px] font-bold leading-tight text-fg">Treino A</p>
+                  <p className="font-serif text-[22px] font-semibold leading-tight text-fg">Treino A</p>
                   <p className="font-mono text-[10px] text-fg-subtle">
                     {concluidos}/{total} feitos
                   </p>
@@ -104,7 +102,7 @@ export function AppMockup({ className = "" }: { className?: string }) {
                     <IconPlay className="h-5 w-5" />
                   </span>
                   <span>
-                    <span className="block text-[12px] font-bold text-fg">Vídeo demonstrativo</span>
+                    <span className="block text-[12px] font-semibold text-fg">Vídeo demonstrativo</span>
                     <span className="block text-[10px] text-fg-subtle">Toque para ver a execução</span>
                   </span>
                 </button>
@@ -147,13 +145,13 @@ export function AppMockup({ className = "" }: { className?: string }) {
                 </div>
 
                 <div className="mt-4">
-                  <div className="mb-1.5 flex justify-between font-mono text-[9px] uppercase tracking-[.2em] text-fg-subtle">
+                  <div className="mb-1.5 flex justify-between font-mono text-[9px] text-fg-subtle">
                     <span>{pct === 100 ? "Treino concluído!" : "Progresso"}</span>
                     <span className="text-lime">{pct}%</span>
                   </div>
                   <div className="h-1.5 overflow-hidden rounded-full bg-white/10">
                     <div
-                      className="h-full rounded-full bg-gradient-to-r from-lime-dark to-lime transition-all duration-500"
+                      className="h-full rounded-full bg-gradient-to-r from-lime-dark to-lime transition-colors duration-500"
                       style={{ width: `${pct}%` }}
                     />
                   </div>
@@ -163,8 +161,8 @@ export function AppMockup({ className = "" }: { className?: string }) {
 
             {tab === "video" && (
               <div>
-                <p className="font-mono text-[9px] uppercase tracking-[.24em] text-lime">Execução</p>
-                <p className="mt-1 font-serif text-[20px] font-bold leading-tight text-fg">{ex.nome}</p>
+                <p className="font-mono text-[9px] text-lime">Execução</p>
+                <p className="mt-1 font-serif text-[20px] font-semibold leading-tight text-fg">{ex.nome}</p>
 
                 <div className="relative mt-3 aspect-square w-full overflow-hidden rounded-2xl border border-white/10 bg-ink">
                   <video
@@ -230,7 +228,7 @@ export function AppMockup({ className = "" }: { className?: string }) {
                       alternar(sel);
                       setTab("treino");
                     }}
-                    className="flex-1 min-h-[44px] rounded-full bg-lime py-2 text-[11px] font-bold text-onlime"
+                    className="flex-1 min-h-[44px] rounded-full bg-lime py-2 text-[11px] font-semibold text-onlime"
                   >
                     {feitos[sel] ? "Desmarcar" : "Marcar feito"}
                   </button>
@@ -240,8 +238,8 @@ export function AppMockup({ className = "" }: { className?: string }) {
 
             {tab === "evolucao" && (
               <div>
-                <p className="font-mono text-[9px] uppercase tracking-[.24em] text-lime">Sua evolução</p>
-                <p className="mt-1 font-serif text-[20px] font-bold leading-tight text-fg">Carga no supino</p>
+                <p className="font-mono text-[9px] text-lime">Sua evolução</p>
+                <p className="mt-1 font-serif text-[20px] font-semibold leading-tight text-fg">Carga no supino</p>
                 <p className="mt-0.5 font-mono text-[10px] text-fg-subtle">Semana {semana + 1}: {semanas[semana]! + 22} kg</p>
 
                 <div className="mt-4 flex h-32 items-end gap-2">
@@ -254,7 +252,7 @@ export function AppMockup({ className = "" }: { className?: string }) {
                       className="group flex h-full flex-1 flex-col justify-end"
                     >
                       <span
-                        className={`block w-full rounded-t-md transition-all duration-500 ${
+                        className={`block w-full rounded-t-md transition-colors duration-500 ${
                           i === semana ? "bg-lime" : "bg-white/15 group-hover:bg-lime/40"
                         }`}
                         style={{ height: `${h}%` }}
@@ -270,11 +268,11 @@ export function AppMockup({ className = "" }: { className?: string }) {
 
                 <div className="mt-4 grid grid-cols-2 gap-2">
                   <div className="rounded-xl border border-white/10 bg-white/[.04] p-2.5">
-                    <p className="font-serif text-[18px] font-bold text-lime">4/5</p>
+                    <p className="font-serif text-[18px] font-semibold text-lime">4/5</p>
                     <p className="text-[10px] text-fg-subtle">treinos na semana</p>
                   </div>
                   <div className="rounded-xl border border-white/10 bg-white/[.04] p-2.5">
-                    <p className="font-serif text-[18px] font-bold text-lime">+{Math.round(((semanas[semana]! - semanas[0]!) / semanas[0]!) * 100)}%</p>
+                    <p className="font-serif text-[18px] font-semibold text-lime">+{Math.round(((semanas[semana]! - semanas[0]!) / semanas[0]!) * 100)}%</p>
                     <p className="text-[10px] text-fg-subtle">desde a semana 1</p>
                   </div>
                 </div>
@@ -283,7 +281,7 @@ export function AppMockup({ className = "" }: { className?: string }) {
 
             {tab === "chat" && (
               <div className="flex min-h-full flex-col">
-                <p className="font-mono text-[9px] uppercase tracking-[.24em] text-lime">Conversa com o Luan</p>
+                <p className="font-mono text-[9px] text-lime">Conversa com o Luan</p>
                 <div className="mt-3 grid gap-2">
                   {msgs.map((m, i) => (
                     <p
@@ -327,31 +325,30 @@ export function AppMockup({ className = "" }: { className?: string }) {
                 className={`flex flex-col items-center justify-center gap-0.5 rounded-lg min-h-[44px] py-1 transition-colors ${tab === id ? "text-lime" : "text-fg-subtle hover:text-fg"}`}
               >
                 <Icon className="h-[18px] w-[18px]" />
-                <span className="font-mono text-[8px] uppercase tracking-wider">{rotulo}</span>
+                <span className="font-mono text-[8px]">{rotulo}</span>
               </button>
             ))}
           </nav>
         </div>
       </div>
 
-      <div className="absolute -left-36 top-[48%] hidden animate-floaty rounded-2xl border border-white/10 bg-ink/85 px-3.5 py-2.5 shadow-2xl backdrop-blur-xl xl:block">
-        <p className="font-mono text-[9px] uppercase tracking-[.2em] text-lime">App personalizado</p>
+      <div className="absolute -left-36 top-[48%] hidden rounded-2xl border border-white/10 bg-ink-card px-4 py-3 xl:block">
+        <p className="font-mono text-[9px] text-lime">App personalizado</p>
         <p className="text-[13px] font-semibold text-fg">Feito para o seu treino</p>
       </div>
       <div
-        className="absolute -right-36 top-[14%] hidden animate-floaty rounded-2xl border border-white/10 bg-ink/85 px-3.5 py-2.5 shadow-2xl backdrop-blur-xl xl:block"
-        style={{ animationDelay: "-3.2s" }}
+        className="absolute -right-36 top-[14%] hidden rounded-2xl border border-white/10 bg-ink-card px-4 py-3 xl:block"
       >
-        <p className="font-mono text-[9px] uppercase tracking-[.2em] text-lime">Online</p>
+        <p className="font-mono text-[9px] text-lime">Online</p>
         <p className="text-[13px] font-semibold text-fg">De onde você estiver</p>
       </div>
       </div>
 
       {/* Convite para tocar: no celular fica ACIMA do aparelho, para ser visto antes de rolar */}
       <div className="relative left-1/2 order-1 mb-6 flex w-[min(92vw,360px)] -translate-x-1/2 flex-col items-center gap-2.5 text-center lg:order-2 lg:mb-0 lg:mt-6">
-        <p className="inline-flex items-center gap-2.5 rounded-full bg-lime px-5 py-3.5 text-[16px] font-bold leading-tight text-onlime shadow-[0_10px_24px_-12px_rgba(0,0,0,.8)] sm:text-[17px]">
+        <p className="inline-flex items-center gap-2.5 rounded-full bg-lime px-5 py-3.5 text-[16px] font-semibold leading-tight text-onlime sm:text-[17px]">
           <span className="relative flex h-3 w-3 flex-none">
-            <span className="absolute inline-flex h-full w-full rounded-full bg-ink opacity-60 motion-safe:animate-ping" />
+            <span className="absolute inline-flex h-full w-full rounded-full bg-ink opacity-60" />
             <span className="relative inline-flex h-3 w-3 rounded-full bg-ink" />
           </span>
           {tocou ? "É o app de verdade. Continue tocando!" : "Toque no celular e experimente"}
@@ -363,12 +360,12 @@ export function AppMockup({ className = "" }: { className?: string }) {
 
       {/* Frases que, no computador grande, flutuam ao lado do celular; no celular viram dois selos */}
       <div className="relative left-1/2 order-1 mb-5 flex w-[min(92vw,360px)] -translate-x-1/2 justify-center gap-2.5 lg:order-3 lg:mb-0 lg:mt-5 xl:hidden">
-        <div className="flex-1 rounded-2xl border border-lime/25 bg-ink/85 px-3 py-2.5 text-left shadow-xl">
-          <p className="font-mono text-[11px] uppercase tracking-[.14em] text-lime">App personalizado</p>
+        <div className="flex-1 rounded-2xl border border-white/10 bg-ink-card px-3 py-3 text-left">
+          <p className="font-mono text-[11px] text-lime">App personalizado</p>
           <p className="text-[13px] font-semibold leading-snug text-fg">Feito para o seu treino</p>
         </div>
-        <div className="flex-1 rounded-2xl border border-lime/25 bg-ink/85 px-3 py-2.5 text-left shadow-xl">
-          <p className="font-mono text-[11px] uppercase tracking-[.14em] text-lime">Online</p>
+        <div className="flex-1 rounded-2xl border border-white/10 bg-ink-card px-3 py-3 text-left">
+          <p className="font-mono text-[11px] text-lime">Online</p>
           <p className="text-[13px] font-semibold leading-snug text-fg">De onde você estiver</p>
         </div>
       </div>

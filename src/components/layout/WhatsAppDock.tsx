@@ -38,7 +38,7 @@ export function WhatsAppDock() {
         data-wa="flutuante"
         onClick={() => trackWhatsAppClick("flutuante")}
         className={cn(
-          "fixed bottom-6 right-6 z-[95] hidden h-[60px] w-[60px] place-items-center rounded-full bg-lime text-onlime shadow-[0_14px_36px_rgba(0,0,0,.5)] transition-all duration-500 hover:scale-110 md:grid",
+          "fixed bottom-6 right-6 z-[95] hidden h-[60px] w-[60px] place-items-center rounded-full bg-lime text-onlime transition-[opacity,transform] duration-300 md:grid",
           show ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-6 opacity-0"
         )}
       >
@@ -47,7 +47,7 @@ export function WhatsAppDock() {
 
       <div
         className={cn(
-          "fixed inset-x-0 bottom-0 z-[90] border-t border-white/10 bg-ink-deep/90 px-4 pb-[calc(12px+env(safe-area-inset-bottom))] pt-3 backdrop-blur-xl transition-transform duration-500 md:hidden",
+          "fixed inset-x-0 bottom-0 z-[90] border-t border-white/10 bg-ink-deep px-4 pb-[calc(12px+env(safe-area-inset-bottom))] pt-3 transition-transform duration-500 md:hidden",
           show && !noContato ? "translate-y-0" : "translate-y-full"
         )}
         aria-hidden={!(show && !noContato)}

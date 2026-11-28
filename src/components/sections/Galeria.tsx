@@ -17,8 +17,8 @@ export function Galeria() {
     <section id="fotos" className="mx-auto max-w-[1240px] px-5 pb-[clamp(52px,8vw,116px)]">
       <Reveal className="mb-9 max-w-[720px] sm:mb-12">
         <SectionLabel index="04">Fotos</SectionLabel>
-        <h2 className="font-serif text-[clamp(30px,4.2vw,54px)] font-bold leading-[1.06] text-fg">
-          Luan e seus <span className="italic text-lime">alunos.</span>
+        <h2 className="font-serif text-[clamp(30px,4.2vw,54px)] font-medium leading-[1.06] text-fg">
+          Luan e seus <span className="text-lime">alunos.</span>
         </h2>
       </Reveal>
       <div className="grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-3">

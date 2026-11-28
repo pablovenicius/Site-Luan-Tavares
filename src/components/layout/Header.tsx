@@ -38,14 +38,14 @@ export function Header() {
     <>
       <header
         className={cn(
-          "fixed inset-x-0 top-0 z-[100] transition-all duration-500",
-          scrolled ? "border-b border-white/[.07] bg-ink/75 backdrop-blur-xl" : "bg-transparent",
+          "fixed inset-x-0 top-0 z-[100] transition-colors duration-300",
+          scrolled ? "border-b border-white/[.07] bg-ink/95" : "bg-transparent",
           hidden && !open ? "-translate-y-full" : "translate-y-0"
         )}
       >
         <div
           className={cn(
-            "mx-auto flex max-w-[1240px] items-center justify-between gap-3 px-4 min-[360px]:gap-6 min-[360px]:px-5 transition-all duration-500",
+            "mx-auto flex max-w-[1240px] items-center justify-between gap-3 px-4 min-[360px]:gap-6 min-[360px]:px-5",
             scrolled ? "py-2" : "py-3.5 md:py-5"
           )}
         >
@@ -57,7 +57,7 @@ export function Header() {
               height={2187}
               sizes="140px"
               priority
-              className={cn("w-auto transition-all duration-500", scrolled ? "h-[40px] min-[360px]:h-[44px] md:h-[54px]" : "h-[48px] min-[360px]:h-[56px] md:h-[68px]")}
+              className={cn("w-auto transition-[height] duration-300", scrolled ? "h-[40px] min-[360px]:h-[44px] md:h-[54px]" : "h-[48px] min-[360px]:h-[56px] md:h-[68px]")}
             />
           </a>
 
@@ -105,7 +105,7 @@ export function Header() {
       {/* menu mobile em tela cheia */}
       <div
         className={cn(
-          "fixed inset-0 z-[99] flex flex-col justify-center bg-ink/95 px-8 backdrop-blur-2xl transition-all duration-500 md:hidden",
+          "fixed inset-0 z-[99] flex flex-col justify-center bg-ink px-8 transition-[opacity,visibility] duration-300 md:hidden",
           open ? "visible opacity-100" : "invisible opacity-0"
         )}
       >
@@ -117,7 +117,7 @@ export function Header() {
               onClick={() => setOpen(false)}
               style={{ transitionDelay: open ? `${120 + i * 60}ms` : "0ms" }}
               className={cn(
-                "border-b border-white/[.07] py-5 font-serif text-4xl font-bold text-fg transition-all duration-500 focus-visible:text-lime focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-lime",
+                "border-b border-white/[.07] py-5 font-serif text-4xl font-medium text-fg transition-all duration-500 focus-visible:text-lime focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-lime",
                 open ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"
               )}
             >

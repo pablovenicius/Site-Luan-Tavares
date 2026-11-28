@@ -4,7 +4,7 @@
   font:500 11px/1.2 "Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--pc-nevoa)}
 .pc-assinatura.pc-claro{--pc-linha:#D5D9E2;--pc-nevoa:#5B6475;--pc-cobalto:#4565FF;--pc-cobalto-txt:#2C45D6}
 .pc-assinatura.pc-esq{align-items:flex-start;text-align:left}
-.pc-assinatura .pc-rotulo{letter-spacing:.16em;text-transform:uppercase;margin:0}
+.pc-assinatura .pc-rotulo{letter-spacing:.02em;margin:0}
 .pc-assinatura .pc-logo{display:inline-block;margin-top:6px}
 .pc-assinatura .pc-logo img{display:block;height:24px;width:auto} /* 24px = 122px de largura; o manual pede no mínimo 120px */
 .pc-assinatura .pc-icones{display:flex;gap:8px}

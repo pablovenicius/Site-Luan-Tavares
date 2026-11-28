@@ -16,9 +16,9 @@ export function Metodo() {
       <div className="grid grid-cols-[minmax(0,1fr)] gap-16 lg:grid-cols-[.8fr_1.2fr] lg:gap-24">
         <Reveal className="lg:sticky lg:top-32 lg:self-start">
           <SectionLabel index="03">Método</SectionLabel>
-          <h2 className="mb-5 font-serif text-[clamp(30px,4.2vw,54px)] font-bold leading-[1.06] text-fg">
+          <h2 className="mb-5 font-serif text-[clamp(30px,4.2vw,54px)] font-medium leading-[1.06] text-fg">
             Bom treino não é{" "}
-            <span className="italic text-lime">igual para todo mundo.</span>
+            <span className="text-lime">igual para todo mundo.</span>
           </h2>
           <p className="max-w-[40ch] text-lg text-fg-muted">
             Por isso o processo tem etapas claras — e todas passam por você.
