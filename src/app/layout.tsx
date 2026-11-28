@@ -1,14 +1,14 @@
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
-import { JetBrains_Mono, Playfair_Display, Plus_Jakarta_Sans } from "next/font/google";
+import { JetBrains_Mono, Space_Grotesk, Plus_Jakarta_Sans } from "next/font/google";
 import { siteConfig } from "@/config/site";
 import { getStructuredData } from "@/lib/structured-data";
 import "./globals.css";
 
-const playfair = Playfair_Display({
+const display = Space_Grotesk({
   subsets: ["latin"],
-  weight: ["600", "700", "800"],
-  variable: "--font-playfair",
+  weight: ["500", "600"],
+  variable: "--font-display",
   display: "swap",
 });
 
@@ -56,7 +56,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   const pixelId = process.env.NEXT_PUBLIC_META_PIXEL_ID;
 
   return (
-    <html lang="pt-BR" className={`${playfair.variable} ${jakarta.variable} ${mono.variable}`}>
+    <html lang="pt-BR" className={`${display.variable} ${jakarta.variable} ${mono.variable}`}>
       <head>
         <script
           type="application/ld+json"

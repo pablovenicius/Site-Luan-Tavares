@@ -15,7 +15,7 @@ const config: Config = {
         danger: "#FF6B6B",
       },
       fontFamily: {
-        serif: ["var(--font-playfair)", "Georgia", "serif"],
+        serif: ["var(--font-display)", "system-ui", "sans-serif"],
         sans: ["var(--font-jakarta)", "system-ui", "sans-serif"],
         mono: ["var(--font-mono)", "ui-monospace", "SFMono-Regular", "monospace"],
       },
