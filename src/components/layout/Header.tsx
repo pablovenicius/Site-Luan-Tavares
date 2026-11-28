@@ -12,6 +12,19 @@ export function Header() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [hidden, setHidden] = useState(false);
+  const [ativa, setAtiva] = useState("");
+
+  // seção visível no meio da tela: marca o link correspondente
+  useEffect(() => {
+    const ids = navLinks.map((l) => l.href.replace("#", ""));
+    const els = ids.map((id) => document.getElementById(id)).filter((e): e is HTMLElement => !!e);
+    const io = new IntersectionObserver(
+      (entries) => entries.forEach((e) => e.isIntersecting && setAtiva(e.target.id)),
+      { rootMargin: "-45% 0px -50% 0px" }
+    );
+    els.forEach((e) => io.observe(e));
+    return () => io.disconnect();
+  }, []);
 
   // encolhe ao rolar; esconde ao descer e volta ao subir
   useEffect(() => {
@@ -66,10 +79,16 @@ export function Header() {
               <a
                 key={l.href}
                 href={l.href}
-                className="group relative py-1 text-sm font-semibold text-fg-muted transition-colors hover:text-fg"
+                aria-current={ativa === l.href.replace("#", "") ? "true" : undefined}
+                className={cn(
+                  "group relative py-1 text-sm font-semibold transition-colors hover:text-fg",
+                  ativa === l.href.replace("#", "") ? "text-fg" : "text-fg-muted"
+                )}
               >
                 {l.label}
-                <span className="absolute inset-x-0 -bottom-0.5 h-px origin-left scale-x-0 bg-lime transition-transform duration-300 group-hover:scale-x-100" />
+                <span className={cn("absolute inset-x-0 -bottom-0.5 h-px origin-left bg-lime transition-transform duration-300 group-hover:scale-x-100",
+                    ativa === l.href.replace("#", "") ? "scale-x-100" : "scale-x-0"
+                  )} />
               </a>
             ))}
           </nav>
